@@ -1,0 +1,17 @@
+.imcger-quote {
+	position: relative;
+}
+
+.imcger-quote-shadow {
+	position: absolute;
+	height: 64px;
+	width: 100%;
+	bottom: 0px;
+}
+
+.imcger-quote-button {
+	position: relative;
+	display: block;
+	text-align: center;
+	z-index: 999;
+}

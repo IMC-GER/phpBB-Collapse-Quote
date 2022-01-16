@@ -1,0 +1,25 @@
+{
+	"name": "imcger/collapsequote",
+	"type": "phpbb-extension",
+	"description": "If quotes are very long, the box is displayed in a smaller size. A mouse click displays the entire quote.",
+	"homepage": "https://github.com/IMC-GER/phpBB-Collapse-Quote",
+	"version": "0.1.0",
+	"time": "2022-01-16",
+	"license": "GPL-2.0-only",
+	"authors": [
+		{
+			"name": "Thorsten Ahlers",
+			"homepage": "",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=7.3"
+	},
+	"extra": {
+		"display-name": "Collapse Quote",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.1.0,<4.0.0@dev"
+		}
+	}
+}
