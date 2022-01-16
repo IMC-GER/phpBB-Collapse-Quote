@@ -1,5 +1,4 @@
-function ColorToRGBA(color, opacity)
-{  
+function ColorToRGBA(color, opacity) {  
 	var rgbColors = new Object();
 
 	/* Format rgb(255, 255, 255) */
