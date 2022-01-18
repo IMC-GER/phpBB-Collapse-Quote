@@ -2,16 +2,20 @@
 	position: relative;
 }
 
+.imcger-quote-text {
+  transition: 0.5s ease height;
+}
+
 .imcger-quote-shadow {
+	display: none;
 	position: absolute;
-	height: 64px;
 	width: 100%;
 	bottom: 0px;
 }
 
 .imcger-quote-button {
+	display: none;
 	position: relative;
-	display: block;
 	text-align: center;
 	z-index: 999;
 }

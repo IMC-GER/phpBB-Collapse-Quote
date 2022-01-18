@@ -1,0 +1,6 @@
+services:
+    imcger.collapsequote.listener:
+        class: imcger\collapsequote\event\main_listener
+        arguments:
+        tags:
+            - { name: event.listener }
