@@ -29,8 +29,7 @@ class main_listener implements EventSubscriberInterface
 	}
 
 	/**
-	 * Extends the s9e TextFormatter template for the URL and IMG tag to include more
-	 * templates.
+	 * Extends the s9e TextFormatter template for the QUOTE template.
 	 *
 	 * @param	object		$event	The event object
 	 * @return	null
