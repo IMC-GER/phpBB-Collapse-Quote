@@ -1,5 +1,15 @@
-function ColorToRGBA(color, opacity) {
-	var rgbColors = new Object();
+/**
+ *
+ * Collapse Quote
+ * An extension for the phpBB Forum Software package.
+ *
+ * @copyright (c) 2021, Thorsten Ahlers
+ * @license GNU General Public License, version 2 (GPL-2.0)
+ *
+ */
+
+function ColorToRGBA(color, opacity) {  
+	let rgbColors = new Array();
 
 	/* Format rgb(255, 255, 255) */
 	if (color[0] == 'r') {
@@ -9,7 +19,7 @@ function ColorToRGBA(color, opacity) {
 
 		rgbColors[0] = parseInt(rgbColors[0]);
 		rgbColors[1] = parseInt(rgbColors[1]);
-		rgbColors[2] = parseInt(rgbColors[2]);
+		rgbColors[2] = parseInt(rgbColors[2]);		
 	}
 	/* Format #ffffff */
 	else if (color.substring(0,1) == "#" && color.length == 7) {
@@ -32,14 +42,14 @@ function ColorToRGBA(color, opacity) {
 }
 
 function getStyleData() {
-	let para = document.querySelector('blockquote');
+	let para	   = document.querySelector('blockquote');
 	let compStyles = window.getComputedStyle(para);
 	let lineHeight = parseInt(compStyles.getPropertyValue('line-height'));
 	let paddingTop = parseInt(compStyles.getPropertyValue('padding-top'));
 	let paddingBot = parseInt(compStyles.getPropertyValue('padding-bottom'));
 	let bgColor	   = compStyles.getPropertyValue('background-color');
 	let maxQuoteHeigth = (4 * lineHeight) + paddingTop + paddingBot;
-	let shadowHeigth   = 4 * lineHeight;
+	let shadowHeigth   =  4 * lineHeight;
 
 	return({"bgColor": bgColor, "lineHeight": lineHeight, "shadowHeigth": shadowHeigth, "maxQuoteHeigth": maxQuoteHeigth, "padBottom": paddingBot});
 }
@@ -52,7 +62,7 @@ function toggleQuote(quoteButton) {
 
 	if(quoteShadow.style.display == "none") {
 		quoteBox.style.height 	  = styleData.maxQuoteHeigth + "px";
-		quoteShadow.style.display = "inherit";
+		quoteShadow.style.display = "block";
 		quoteButton.innerHTML 	  = "&darr;&darr;&darr;&darr;&darr;&darr;&darr;";
 	}
 	else {
@@ -62,11 +72,25 @@ function toggleQuote(quoteButton) {
 	}
 }
 
+function resizeQuote() {
+	/* Liste von <blockquote> Elementen die aufgeklappt sind */
+	let x = document.getElementsByClassName("imcger-quote-shadow");
+
+	for (i = 0; i < x.length; i++) {
+		if(x[i].style.display == "none") {
+			/* Offsetheight des Zitates auslesen und den Anzeigebereich anpassen */
+			x[i].parentElement.style.height = parseInt(x[i].previousSibling.offsetHeight) + "px";
+		}
+	}
+}
+
 function initQuoteBox() {
-	/* Liste von <blockquote>-Elementen, deren unmittelbares übergeordnetes Element
-	   ein <div> mit der Klasse "content" ist */
+	/* Liste von <blockquote> Elementen, deren unmittelbares übergeordnetes Element
+	   ein <div> mit der Klasse "content" ist.
+	   Hier durch wird ausgeschossen das verschachtelte blockquote Elemente angezeigt werden */
 	let x = document.querySelectorAll("div.content > blockquote");
 	
+	/* Wenn kein Element gefunden Initialisierung abbrechen */
 	if(x.length < 1) {
 		return(0);
 	}
@@ -74,18 +98,20 @@ function initQuoteBox() {
 	/* Eigenschaften des phpBB Styles abfragen */
 	let styleData = getStyleData();
 
+	/* Grösse der gefundenen Quoteboxen überprüfen und gegebenenfalls verkleinern */
 	for (i = 0; i < x.length; i++) {
-		/* Wenn Quote Box zu groß */
-		if(parseInt(x[i].querySelector(".imcger-quote-text").offsetHeight) > styleData.maxQuoteHeigth) {
-			let quoteText	= x[i].querySelector(".imcger-quote-text");
+		let quoteText	= x[i].getElementsByClassName("imcger-quote-text")[0];
+		
+		/* Wenn Quotebox zu groß die Box verkleinern und Schatten und Button anzeigen */
+		if(parseInt(quoteText.offsetHeight) > styleData.maxQuoteHeigth) {
 			let quoteShadow = quoteText.lastChild;
 			let quoteButton = quoteText.nextSibling;
 
 			/* Eigenschaften dem Schattenelement hinzufügen */
-			quoteShadow.style.backgroundImage = 'linear-gradient(' + ColorToRGBA(styleData.bgColor, 0) + ', ' + ColorToRGBA(styleData.bgColor, 0.8) + ' 70%, ' + ColorToRGBA(styleData.bgColor, 1) + ')';
+			quoteShadow.style.backgroundImage = 'linear-gradient(' + ColorToRGBA(styleData.bgColor, 0) + ',' + ColorToRGBA(styleData.bgColor, 0.8) + ' 70%,' + ColorToRGBA(styleData.bgColor, 1) + ')';
 			quoteShadow.style.height  = styleData.shadowHeigth + 'px';
 			quoteShadow.style.bottom  = styleData.lineHeight + 'px';
-			quoteShadow.style.display = "block"
+			quoteShadow.style.display = "block";
 
 			/* Eigenschaften dem Toggelbutton hinzufügen */
 			quoteButton.style.backgroundColor = styleData.bgColor;
@@ -93,11 +119,16 @@ function initQuoteBox() {
 			quoteButton.style.paddingBottom   = styleData.padBottom + 'px';
 			quoteButton.innerHTML = "&darr;&darr;&darr;&darr;&darr;&darr;&darr;";
 			quoteButton.style.cursor = "pointer";
-			quoteButton.style.display = "block"
+			quoteButton.style.display = "block";
+			
 			/* Quote Box verkleinern */
 			quoteText.style.height = styleData.maxQuoteHeigth + "px";
 		}
 	}
 }
 
+/* Initialisierungsroutine aufrufen */
 initQuoteBox();
+
+/* Grösse der Quotebox anpassen wenn das Browserfenster seine grösse ändert */
+window.addEventListener("resize", resizeQuote);

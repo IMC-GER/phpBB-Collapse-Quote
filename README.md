@@ -19,6 +19,10 @@ Go to "ACP" > "Customise" > "Manage extensions" and enable the "Collapse Quote" 
 
 ## Changelog
 
+### v0.3.0 (20-01-2022)
+- Minor code changes
+- Adjust Quotebox when window resize
+
 ### v0.2.0 (19-01-2022)
 - Code changes
 - Add animation
