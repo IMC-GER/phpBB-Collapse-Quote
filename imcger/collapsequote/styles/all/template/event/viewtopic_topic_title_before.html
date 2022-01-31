@@ -1,2 +1,10 @@
 {% INCLUDECSS '@imcger_collapsequote/quote.css' %}
 {% INCLUDEJS '@imcger_collapsequote/quote.js' %}
+<script>
+	const imcgerButtonUp   = "{{ lang('LA_COLLAPSEQUOTE_LESS') }}";
+	const imcgerButtonDown = "{{ lang('LA_COLLAPSEQUOTE_MORE') }}";
+
+	const imcgerVisibleLines = {{ IMCGER_COLLAPSEQUOTE_VISIBLE_LINES }};
+	const imcgerButtonFG	 = "#{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG }}";
+	const imcgerButtonBG	 = "#{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG }}";
+</script>

@@ -4,7 +4,7 @@
  * Collapse Quote
  * An extension for the phpBB Forum Software package.
  *
- * @copyright (c) 2021, Thorsten Ahlers
+ * @copyright (c) 2022, Thorsten Ahlers
  * @license GNU General Public License, version 2 (GPL-2.0)
  *
  */
@@ -21,15 +21,55 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class main_listener implements EventSubscriberInterface
 {
+	/** @var \phpbb\config\config */
+	protected $config;
+
+	/** @var \phpbb\template\template */
+	protected $template;
+	
+	/** @var \phpbb\language\language */
+	protected $language;
+
+
+	public function __construct
+	(
+		\phpbb\config\config $config, 
+		\phpbb\template\template $template,
+		\phpbb\language\language $language
+	)
+	{
+		$this->config   = $config;
+		$this->template = $template;
+		$this->language = $language;
+	}
+	
 	static public function getSubscribedEvents()
 	{
 		return array(
-			'core.text_formatter_s9e_configure_after' => 'configure_textformatter',
+			'core.viewtopic_assign_template_vars_before' => 'viewtopic_assign_template_vars',
+			'core.text_formatter_s9e_configure_after' 	 => 'configure_textformatter',
 		);
 	}
 
+	public function viewtopic_assign_template_vars()
+	{  
+		// Add Fancybox language file
+		$this->language->add_lang('collapsequote_lang','imcger/collapsequote');
+
+		$imcger_collapsequote_visible_lines	= $this->config['imcger_collapsequote_visible_lines'];
+		$imcger_collapsequote_button_fg		= $this->config['imcger_collapsequote_button_fg'];
+		$imcger_collapsequote_button_bg		= $this->config['imcger_collapsequote_button_bg'];
+
+		$this->template->assign_vars( array(
+			'IMCGER_COLLAPSEQUOTE_VISIBLE_LINES' => $imcger_collapsequote_visible_lines,
+			'IMCGER_COLLAPSEQUOTE_BUTTON_FG'	 => $imcger_collapsequote_button_fg,
+			'IMCGER_COLLAPSEQUOTE_BUTTON_BG'	 => $imcger_collapsequote_button_bg,
+		));
+	}
+
 	/**
-	 * Extends the s9e TextFormatter template for the QUOTE template.
+	 * Extends the s9e TextFormatter template for the URL and IMG tag to include more
+	 * templates.
 	 *
 	 * @param	object		$event	The event object
 	 * @return	null

@@ -7,7 +7,8 @@ If quotes are very long, the box is displayed in a smaller size. A mouse click d
 - No settings. 
 
 #### Settings in Administration Control Panel
-- No settings. 
+- Number of visible lines. 
+- Button colors.
 
 ## Requirements
 - php 7.3 or higher
@@ -18,6 +19,10 @@ Copy the extension to `phpBB3/ext/imcger/collapsequote`.
 Go to "ACP" > "Customise" > "Manage extensions" and enable the "Collapse Quote" extension.
 
 ## Changelog
+
+### v0.4.0 (31-01-2022)
+- Language support
+- Settings in ACP
 
 ### v0.3.0 (20-01-2022)
 - Minor code changes

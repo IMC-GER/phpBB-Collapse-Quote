@@ -3,7 +3,7 @@
  * Collapse Quote
  * An extension for the phpBB Forum Software package.
  *
- * @copyright (c) 2021, Thorsten Ahlers
+ * @copyright (c) 2022, Thorsten Ahlers
  * @license GNU General Public License, version 2 (GPL-2.0)
  *
  */
@@ -48,8 +48,9 @@ function getStyleData() {
 	let paddingTop = parseInt(compStyles.getPropertyValue('padding-top'));
 	let paddingBot = parseInt(compStyles.getPropertyValue('padding-bottom'));
 	let bgColor	   = compStyles.getPropertyValue('background-color');
-	let maxQuoteHeigth = (4 * lineHeight) + paddingTop + paddingBot;
-	let shadowHeigth   =  4 * lineHeight;
+	let maxQuoteHeigth = (imcgerVisibleLines * lineHeight) + paddingTop + paddingBot;
+	let shadowLines	   = imcgerVisibleLines > 4 ? 4 : imcgerVisibleLines;
+	let shadowHeigth   =  shadowLines * lineHeight;
 
 	return({"bgColor": bgColor, "lineHeight": lineHeight, "shadowHeigth": shadowHeigth, "maxQuoteHeigth": maxQuoteHeigth, "padBottom": paddingBot});
 }
@@ -63,12 +64,12 @@ function toggleQuote(quoteButton) {
 	if(quoteShadow.style.display == "none") {
 		quoteBox.style.height 	  = styleData.maxQuoteHeigth + "px";
 		quoteShadow.style.display = "block";
-		quoteButton.innerHTML 	  = "&darr;&darr;&darr;&darr;&darr;&darr;&darr;";
+		quoteButton.innerHTML 	  = imcgerButtonDown;
 	}
 	else {
 		quoteBox.style.height 	  = quoteText.offsetHeight + "px";
 		quoteShadow.style.display = "none";
-		quoteButton.innerHTML 	  = "&uarr;&uarr;&uarr;&uarr;&uarr;&uarr;&uarr;";
+		quoteButton.innerHTML 	  = imcgerButtonUp;
 	}
 }
 
@@ -114,11 +115,13 @@ function initQuoteBox() {
 			quoteShadow.style.display = "block";
 
 			/* Eigenschaften dem Toggelbutton hinzufügen */
-			quoteButton.style.backgroundColor = styleData.bgColor;
-			quoteButton.style.marginBottom	  = '-' + styleData.padBottom + 'px';
-			quoteButton.style.paddingBottom   = styleData.padBottom + 'px';
-			quoteButton.innerHTML = "&darr;&darr;&darr;&darr;&darr;&darr;&darr;";
-			quoteButton.style.cursor = "pointer";
+			quoteButton.style.backgroundColor = imcgerButtonBG.length > 3 ? imcgerButtonBG : styleData.bgColor;
+			if(imcgerButtonFG.length > 3) {
+				quoteButton.style.color = imcgerButtonFG;
+			}
+			quoteButton.style.margin  = '0 -' + styleData.padBottom + 'px -' + styleData.padBottom + 'px -' + styleData.padBottom + 'px';
+			quoteButton.style.padding = styleData.padBottom + 'px';
+			quoteButton.innerHTML	  = imcgerButtonDown;
 			quoteButton.style.display = "block";
 			
 			/* Quote Box verkleinern */

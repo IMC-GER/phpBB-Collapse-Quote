@@ -1,0 +1,38 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{{ lang('COLLAPSEQUOTE_TITLE') }}</h1>
+
+<p>{{ lang('COLLAPSEQUOTE_TITLE_EXPLAIN') }}</p>
+
+<form id="acp_board" method="post" action="{U_ACTION}">
+
+	<fieldset>
+		<legend>{{ lang('COLLAPSEQUOTE_SETTINGS_STYLE') }}</legend>
+		<dl>
+			<dt><label for="imcger_collapsequote_visible_lines">{{ lang('COLLAPSEQUOTE_VISIBLE_LINES') }} {{ lang('COLON') }}</label><br><span>{{ lang('COLLAPSEQUOTE_VISIBLE_LINES_DESC') }}</span></dt>
+			<dd>
+				<input id="imcger_collapsequote_visible_lines" name="imcger_collapsequote_visible_lines" value='{{ IMCGER_COLLAPSEQUOTE_VISIBLE_LINES }}' type="number" min="2" max="100" size="6" maxlength="6" />
+			</dd>
+		</dl>
+		<dl>
+			
+			<dt><label for="imcger_collapsequote_button_fg">{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR') ~ lang('COLON') }}</label><br /><span>{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR_DESC') }}</span></dt>
+			<dd>
+				<input id="imcger_collapsequote_button_fg" name="imcger_collapsequote_button_fg" type="text" value="{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG }}" size="6" maxlength="6" {% if IMCGER_COLLAPSEQUOTE_BUTTON_FG %}style="border-right:20px solid #{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG }}"{% endif %} />
+			</dd>
+		</dl>
+		<dl>
+			
+			<dt><label for="imcger_collapsequote_button_bg">{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR') ~ lang('COLON') }}</label><br /><span>{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR_DESC') }}</span></dt>
+			<dd>
+				<input id="imcger_collapsequote_button_bg" name="imcger_collapsequote_button_bg" type="text" value="{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG }}" size="6" maxlength="6" {% if IMCGER_COLLAPSEQUOTE_BUTTON_BG %}style="border-right:20px solid #{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG }}"{% endif %} />
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />
+		{S_FORM_TOKEN}
+	</fieldset>
+</form>
+<!-- INCLUDE overall_footer.html -->

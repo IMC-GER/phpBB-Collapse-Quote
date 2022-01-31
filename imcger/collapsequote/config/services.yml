@@ -2,5 +2,8 @@ services:
     imcger.collapsequote.listener:
         class: imcger\collapsequote\event\main_listener
         arguments:
+            - '@config'
+            - '@template'
+            - '@language'
         tags:
             - { name: event.listener }
