@@ -20,6 +20,6 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, array(
-	'LA_COLLAPSEQUOTE_LESS' => 'Zeige weniger',
-	'LA_COLLAPSEQUOTE_MORE' => 'Weiterlesen ...',
+	'COLLAPSEQUOTE_LESS' => 'Zeige weniger',
+	'COLLAPSEQUOTE_MORE' => 'Weiterlesen ...',
 ));
