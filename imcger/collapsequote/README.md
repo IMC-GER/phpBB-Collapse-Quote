@@ -20,6 +20,9 @@ Go to "ACP" > "Customise" > "Manage extensions" and enable the "Collapse Quote" 
 
 ## Changelog
 
+### v0.4.1 (01-02-2022)
+- Minore code change
+
 ### v0.4.0 (31-01-2022)
 - Language support
 - Settings in ACP
