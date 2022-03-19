@@ -1,9 +1,9 @@
 /*
-colpick Color Picker
-Copyright 2013 Jose Vargas. Licensed under GPL license.
-Based on Stefan Petre's Color Picker www.eyecon.ro, dual licensed under the MIT and GPL licenses
-
-For usage and examples: colpick.com/plugin
+ * colpick Color Picker
+ * Copyright 2013 Jose Vargas. Licensed under GPL license.
+ * Based on Stefan Petre's Color Picker www.eyecon.ro, dual licensed under the MIT and GPL licenses
+ *
+ * For usage and examples: colpick.com/plugin
  */
 
 (function ($) {
@@ -137,7 +137,7 @@ For usage and examples: colpick.com/plugin
 				};
 				$(document).on('mouseup touchend',current,upHue);
 				$(document).on('mousemove touchmove',current,moveHue);
-				
+
 				var pageY = ((ev.type == 'touchstart') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY );
 				change.apply(
 					current.cal.data('colpick')
@@ -172,7 +172,7 @@ For usage and examples: colpick.com/plugin
 					pos: $(this).offset()
 				};
 				current.preview = current.cal.data('colpick').livePreview;
-				
+
 				$(document).on('mouseup touchend',current,upSelector);
 				$(document).on('mousemove touchmove',current,moveSelector);
 
@@ -270,7 +270,7 @@ For usage and examples: colpick.com/plugin
 					s: Math.min(100, Math.max(0, hsb.s)),
 					b: Math.min(100, Math.max(0, hsb.b))
 				};
-			}, 
+			},
 			fixRGB = function (rgb) {
 				return {
 					r: Math.min(255, Math.max(0, rgb.r)),
@@ -314,7 +314,7 @@ For usage and examples: colpick.com/plugin
 				} else {
 					return this;
 				}
-				
+
 				//For each selected DOM element
 				return this.each(function () {
 					//If the element does not have an ID
@@ -427,7 +427,7 @@ For usage and examples: colpick.com/plugin
 						fillHexFields(col, cal.get(0));
 						setHue(col, cal.get(0));
 						setSelector(col, cal.get(0));
-						
+
 						setNewColor(col, cal.get(0));
 						cal.data('colpick').onChange.apply(cal.parent(), [col, hsbToHex(col), hsbToRgb(col), cal.data('colpick').el, 1]);
 						if(setCurrent) {
@@ -454,12 +454,12 @@ For usage and examples: colpick.com/plugin
 		hsb.b = max;
 		hsb.s = max != 0 ? 255 * delta / max : 0;
 		if (hsb.s != 0) {
-			if (rgb.r == max) hsb.h = (rgb.g - rgb.b) / delta;
-			else if (rgb.g == max) hsb.h = 2 + (rgb.b - rgb.r) / delta;
-			else hsb.h = 4 + (rgb.r - rgb.g) / delta;
-		} else hsb.h = -1;
+			if (rgb.r == max) {hsb.h = (rgb.g - rgb.b) / delta;}
+			else if (rgb.g == max) {hsb.h = 2 + (rgb.b - rgb.r) / delta;}
+			else {hsb.h = 4 + (rgb.r - rgb.g) / delta;}
+		} else {hsb.h = -1;}
 		hsb.h *= 60;
-		if (hsb.h < 0) hsb.h += 360;
+		if (hsb.h < 0) {hsb.h += 360;}
 		hsb.s *= 100/255;
 		hsb.b *= 100/255;
 		return hsb;
@@ -475,13 +475,13 @@ For usage and examples: colpick.com/plugin
 			var t1 = v;
 			var t2 = (255-s)*v/255;
 			var t3 = (t1-t2)*(h%60)/60;
-			if(h==360) h = 0;
-			if(h<60) {rgb.r=t1;	rgb.b=t2; rgb.g=t2+t3}
-			else if(h<120) {rgb.g=t1; rgb.b=t2;	rgb.r=t1-t3}
-			else if(h<180) {rgb.g=t1; rgb.r=t2;	rgb.b=t2+t3}
-			else if(h<240) {rgb.b=t1; rgb.r=t2;	rgb.g=t1-t3}
-			else if(h<300) {rgb.b=t1; rgb.g=t2;	rgb.r=t2+t3}
-			else if(h<360) {rgb.r=t1; rgb.g=t2;	rgb.b=t1-t3}
+			if (h==360) {h = 0;}
+			if (h<60) {rgb.r=t1;	rgb.b=t2; rgb.g=t2+t3}
+			else if (h<120) {rgb.g=t1; rgb.b=t2; rgb.r=t1-t3}
+			else if (h<180) {rgb.g=t1; rgb.r=t2; rgb.b=t2+t3}
+			else if (h<240) {rgb.b=t1; rgb.r=t2; rgb.g=t1-t3}
+			else if (h<300) {rgb.b=t1; rgb.g=t2; rgb.r=t2+t3}
+			else if (h<360) {rgb.r=t1; rgb.g=t2; rgb.b=t1-t3}
 			else {rgb.r=0; rgb.g=0;	rgb.b=0}
 		}
 		return {r:Math.round(rgb.r), g:Math.round(rgb.g), b:Math.round(rgb.b)};
@@ -509,7 +509,7 @@ For usage and examples: colpick.com/plugin
 		colpickSetColor: colpick.setColor
 	});
 	$.extend({
-		colpick:{ 
+		colpick:{
 			rgbToHex: rgbToHex,
 			rgbToHsb: rgbToHsb,
 			hsbToHex: hsbToHex,

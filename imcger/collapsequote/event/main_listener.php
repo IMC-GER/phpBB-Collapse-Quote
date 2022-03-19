@@ -26,14 +26,14 @@ class main_listener implements EventSubscriberInterface
 
 	/** @var \phpbb\template\template */
 	protected $template;
-	
+
 	/** @var \phpbb\language\language */
 	protected $language;
 
 
 	public function __construct
 	(
-		\phpbb\config\config $config, 
+		\phpbb\config\config $config,
 		\phpbb\template\template $template,
 		\phpbb\language\language $language
 	)
@@ -42,8 +42,8 @@ class main_listener implements EventSubscriberInterface
 		$this->template = $template;
 		$this->language = $language;
 	}
-	
-	static public function getSubscribedEvents()
+
+	public static function getSubscribedEvents()
 	{
 		return array(
 			'core.viewtopic_assign_template_vars_before' => 'viewtopic_assign_template_vars',
@@ -52,7 +52,7 @@ class main_listener implements EventSubscriberInterface
 	}
 
 	public function viewtopic_assign_template_vars()
-	{  
+	{
 		// Add Fancybox language file
 		$this->language->add_lang('collapsequote_lang','imcger/collapsequote');
 
@@ -68,7 +68,7 @@ class main_listener implements EventSubscriberInterface
 	}
 
 	/**
-	 * Extends the s9e TextFormatter template for the URL and IMG tag to include more
+	 * Extends the s9e TextFormatter template for the QUOTE template.
 	 * templates.
 	 *
 	 * @param	object		$event	The event object
@@ -92,5 +92,5 @@ class main_listener implements EventSubscriberInterface
 					'</div>';
 
 		$configurator->tags['QUOTE']->template = str_replace('<xsl:apply-templates/>', $newquote, $default_quote_template);
-	} 
+	}
 }

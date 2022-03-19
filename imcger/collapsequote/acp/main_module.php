@@ -8,7 +8,7 @@
  * @license GNU General Public License, version 2 (GPL-2.0)
  *
  */
- 
+
 namespace imcger\collapsequote\acp;
 
 /**
@@ -35,13 +35,13 @@ class main_module
 			{
 				trigger_error('FORM_INVALID', E_USER_WARNING);
 			}
-			
+
 			$visible_lines = $request->variable('imcger_collapsequote_visible_lines', 4) < 2 ? 2 : $request->variable('imcger_collapsequote_visible_lines', 4);
-			
+
 			$config->set('imcger_collapsequote_visible_lines', $visible_lines);
 			$config->set('imcger_collapsequote_button_bg', $request->variable('imcger_collapsequote_button_bg', ''));
 			$config->set('imcger_collapsequote_button_fg', $request->variable('imcger_collapsequote_button_fg', ''));
-			
+
 			trigger_error($user->lang('ACP_COLLAPSEQUOTE_SETTING_SAVED') . adm_back_link($this->u_action));
 		}
 

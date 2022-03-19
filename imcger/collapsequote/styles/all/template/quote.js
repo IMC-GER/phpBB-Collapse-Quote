@@ -8,7 +8,7 @@
  *
  */
 
-function ColorToRGBA(color, opacity) {  
+function ColorToRGBA(color, opacity) {
 	let rgbColors = new Array();
 
 	/* Format rgb(255, 255, 255) */
@@ -19,7 +19,7 @@ function ColorToRGBA(color, opacity) {
 
 		rgbColors[0] = parseInt(rgbColors[0]);
 		rgbColors[1] = parseInt(rgbColors[1]);
-		rgbColors[2] = parseInt(rgbColors[2]);		
+		rgbColors[2] = parseInt(rgbColors[2]);
 	}
 	/* Format #ffffff */
 	else if (color.substring(0,1) == "#" && color.length == 7) {
@@ -37,7 +37,7 @@ function ColorToRGBA(color, opacity) {
 	else {
 		return(false);
 	}
-	
+
 	return 'rgba(' + rgbColors[0] + ', ' + rgbColors[1] + ', ' + rgbColors[2] + ', ' + opacity + ')';
 }
 
@@ -90,7 +90,7 @@ function initQuoteBox() {
 	   ein <div> mit der Klasse "content" ist.
 	   Hier durch wird ausgeschossen das verschachtelte blockquote Elemente angezeigt werden */
 	let x = document.querySelectorAll("div.content > blockquote");
-	
+
 	/* Wenn kein Element gefunden Initialisierung abbrechen */
 	if(x.length < 1) {
 		return(0);
@@ -102,7 +102,7 @@ function initQuoteBox() {
 	/* Grösse der gefundenen Quoteboxen überprüfen und gegebenenfalls verkleinern */
 	for (i = 0; i < x.length; i++) {
 		let quoteText	= x[i].getElementsByClassName("imcger-quote-text")[0];
-		
+
 		/* Wenn Quotebox zu groß die Box verkleinern und Schatten und Button anzeigen */
 		if(parseInt(quoteText.offsetHeight) > styleData.maxQuoteHeigth) {
 			let quoteShadow = quoteText.lastChild;
@@ -123,7 +123,7 @@ function initQuoteBox() {
 			quoteButton.style.padding = styleData.padBottom + 'px';
 			quoteButton.innerHTML	  = imcgerButtonDown;
 			quoteButton.style.display = "block";
-			
+
 			/* Quote Box verkleinern */
 			quoteText.style.height = styleData.maxQuoteHeigth + "px";
 		}
