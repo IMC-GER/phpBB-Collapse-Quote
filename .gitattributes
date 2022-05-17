@@ -2,3 +2,4 @@
 .editorconfig export-ignore
 /README.md export-ignore
 /LICENSE export-ignore
+/collapsequote_version.json export-ignore
