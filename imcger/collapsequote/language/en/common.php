@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Collapsible Quote
+ * Collapse Quote
  * An extension for the phpBB Forum Software package.
  *
  * @copyright (c) 2022, Thorsten Ahlers
@@ -39,7 +39,7 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, [
-	'COLLAPSEQUOTE_TITLE' => 'Collapsible Quote',
+	'COLLAPSEQUOTE_TITLE' => 'Collapse Quote',
 	'COLLAPSEQUOTE_TITLE_EXPLAIN' => 'Here you can set the size of the quote box and the colors of the button used to resize the quote box.',
 
 	'COLLAPSEQUOTE_SETTINGS_STYLE' => 'Settings',

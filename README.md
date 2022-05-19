@@ -1,4 +1,4 @@
-# phpBB Collapsible Quote
+# phpBB Collapse Quote
 
 ## Description
 If quotes are very long, the box is displayed in a smaller size. A mouse click displays the entire quote.

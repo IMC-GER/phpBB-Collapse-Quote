@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Collapsible Quote
+ * Collapse Quote
  * An extension for the phpBB Forum Software package.
  *
  * @copyright (c) 2022, Thorsten Ahlers

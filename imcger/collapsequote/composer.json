@@ -17,7 +17,7 @@
 		"php": ">=5.4.7"
 	},
 	"extra": {
-		"display-name": "Collapsible Quote",
+		"display-name": "Collapse Quote",
 		"soft-require": {
 			"phpbb/phpbb": ">=3.2.0,<4.0.0@dev"
 		},
