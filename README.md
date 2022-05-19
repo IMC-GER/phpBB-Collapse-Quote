@@ -1,4 +1,4 @@
-# phpBB-Collapse-Quote
+# phpBB Collapsible Quote
 
 ## Description
 If quotes are very long, the box is displayed in a smaller size. A mouse click displays the entire quote.
@@ -19,6 +19,11 @@ Copy the extension to `phpBB3/ext/imcger/collapsequote`.
 Go to "ACP" > "Customise" > "Manage extensions" and enable the "Collapse Quote" extension.
 
 ## Changelog
+
+### v1.0.0 (17-05-2022)
+- If the upper part of the quote box is outside the viewport, scroll it to top position wenn collapse.
+- Language adjustments
+- Add version check
 
 ### v0.4.2 (19-03-2022)
 - Cleanup code

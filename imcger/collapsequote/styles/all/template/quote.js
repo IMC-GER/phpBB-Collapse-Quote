@@ -22,18 +22,18 @@ function ColorToRGBA(color, opacity) {
 		rgbColors[2] = parseInt(rgbColors[2]);
 	}
 	/* Format #ffffff */
-	else if (color.substring(0,1) == "#" && color.length == 7) {
+	else if (color.substring(0,1) == '#' && color.length == 7) {
 		rgbColors[0] = parseInt(color.substring(1, 3), 16);
 		rgbColors[1] = parseInt(color.substring(3, 5), 16);
 		rgbColors[2] = parseInt(color.substring(5, 7), 16);
 	}
 	/* Format #fff */
-	else if (color.substring(0,1) == "#") {
+	else if (color.substring(0,1) == '#') {
 		rgbColors[0] = parseInt(color.substring(1, 2).concat(color.substring(1, 2)), 16);
 		rgbColors[1] = parseInt(color.substring(2, 3).concat(color.substring(2, 3)), 16);
 		rgbColors[2] = parseInt(color.substring(3, 4).concat(color.substring(3, 4)), 16);
 	}
-	/* Undefiniertes Color Format */
+	/* Undefined color format */
 	else {
 		return(false);
 	}
@@ -52,86 +52,93 @@ function getStyleData() {
 	let shadowLines	   = imcgerVisibleLines > 4 ? 4 : imcgerVisibleLines;
 	let shadowHeigth   =  shadowLines * lineHeight;
 
-	return({"bgColor": bgColor, "lineHeight": lineHeight, "shadowHeigth": shadowHeigth, "maxQuoteHeigth": maxQuoteHeigth, "padBottom": paddingBot});
+	return {'bgColor': bgColor, 'lineHeight': lineHeight, 'shadowHeigth': shadowHeigth, 'maxQuoteHeigth': maxQuoteHeigth, 'padBottom': paddingBot};
 }
 
 function toggleQuote(quoteButton) {
-	let styleData   = getStyleData();
-	let quoteBox 	= quoteButton.previousSibling;
-	let quoteText 	= quoteButton.previousSibling.firstChild;
-	let quoteShadow = quoteButton.previousSibling.lastChild;
+	let styleData	 = getStyleData();
+	let quoteBox	 = quoteButton.previousSibling;
+	let quoteBoxRect = quoteBox.getBoundingClientRect();
+	let quoteText	 = quoteBox.firstChild;
+	let quoteShadow	 = quoteBox.lastChild;
 
-	if(quoteShadow.style.display == "none") {
-		quoteBox.style.height 	  = styleData.maxQuoteHeigth + "px";
-		quoteShadow.style.display = "block";
-		quoteButton.innerHTML 	  = imcgerButtonDown;
+	/* Collapse the quotebox */
+	if (quoteShadow.style.display == 'none') {
+		quoteBox.style.height	  = styleData.maxQuoteHeigth + 'px';
+		quoteShadow.style.display = 'block';
+		quoteButton.innerHTML	  = imcgerButtonDown;
+
+		/* If the upper part of the quote box is outside the viewport scroll it to position 0 */
+		if (quoteBoxRect.top < 0) {
+			document.getElementsByTagName('html')[0].style.scrollBehavior = 'smooth';
+			window.scrollBy(0, quoteBoxRect.top);
+		}
 	}
+	/* Expand the quotebox */
 	else {
-		quoteBox.style.height 	  = quoteText.offsetHeight + "px";
-		quoteShadow.style.display = "none";
-		quoteButton.innerHTML 	  = imcgerButtonUp;
+		quoteBox.style.height	  = quoteText.offsetHeight + 'px'; // This way is importent for the animation (CSS transition)
+		quoteShadow.style.display = 'none';
+		quoteButton.innerHTML	  = imcgerButtonUp;
 	}
 }
 
 function resizeQuote() {
-	/* Liste von <blockquote> Elementen die aufgeklappt sind */
-	let x = document.getElementsByClassName("imcger-quote-shadow");
+	/* List of <blockquote> elements that are expanded */
+	let x = document.getElementsByClassName('imcger-quote-shadow');
 
 	for (i = 0; i < x.length; i++) {
-		if(x[i].style.display == "none") {
-			/* Offsetheight des Zitates auslesen und den Anzeigebereich anpassen */
-			x[i].parentElement.style.height = parseInt(x[i].previousSibling.offsetHeight) + "px";
+		if (x[i].style.display == 'none') {
+			/* Read offset height of the quote and adjust the display range */
+			x[i].parentElement.style.height = parseInt(x[i].previousSibling.offsetHeight) + 'px';
 		}
 	}
 }
 
 function initQuoteBox() {
-	/* Liste von <blockquote> Elementen, deren unmittelbares übergeordnetes Element
-	   ein <div> mit der Klasse "content" ist.
-	   Hier durch wird ausgeschossen das verschachtelte blockquote Elemente angezeigt werden */
-	let x = document.querySelectorAll("div.content > blockquote");
+	/* List of <blockquote> elements whose immediate parent is a <div> with class "content".
+	   Here by the nested blockquote elements are not listed. */
+	let x = document.querySelectorAll('div.content > blockquote');
 
-	/* Wenn kein Element gefunden Initialisierung abbrechen */
-	if(x.length < 1) {
-		return(0);
+	/* If no element found Cancel initialization. */
+	if (x.length < 1) {
+		return 0;
 	}
 
-	/* Eigenschaften des phpBB Styles abfragen */
+	/* Query properties of the phpBB style. */
 	let styleData = getStyleData();
 
-	/* Grösse der gefundenen Quoteboxen überprüfen und gegebenenfalls verkleinern */
+	/* Check the size of the found quote boxes and reduce them if necessary. */
 	for (i = 0; i < x.length; i++) {
-		let quoteText	= x[i].getElementsByClassName("imcger-quote-text")[0];
+		let quoteText	= x[i].getElementsByClassName('imcger-quote-text')[0];
 
-		/* Wenn Quotebox zu groß die Box verkleinern und Schatten und Button anzeigen */
-		if(parseInt(quoteText.offsetHeight) > styleData.maxQuoteHeigth) {
+		/* If Quotebox is too big reduce the size of the box and show shadow and button. */
+		if (parseInt(quoteText.offsetHeight) > styleData.maxQuoteHeigth) {
 			let quoteShadow = quoteText.lastChild;
 			let quoteButton = quoteText.nextSibling;
 
-			/* Eigenschaften dem Schattenelement hinzufügen */
+			/* Add properties to the shadow element. */
 			quoteShadow.style.backgroundImage = 'linear-gradient(' + ColorToRGBA(styleData.bgColor, 0) + ',' + ColorToRGBA(styleData.bgColor, 0.8) + ' 70%,' + ColorToRGBA(styleData.bgColor, 1) + ')';
 			quoteShadow.style.height  = styleData.shadowHeigth + 'px';
 			quoteShadow.style.bottom  = styleData.lineHeight + 'px';
-			quoteShadow.style.display = "block";
+			quoteShadow.style.display = 'block';
 
-			/* Eigenschaften dem Toggelbutton hinzufügen */
+			/* Add properties to toggle button. */
 			quoteButton.style.backgroundColor = imcgerButtonBG.length > 3 ? imcgerButtonBG : styleData.bgColor;
-			if(imcgerButtonFG.length > 3) {
-				quoteButton.style.color = imcgerButtonFG;
-			}
+			quoteButton.style.color			  = imcgerButtonFG.length > 3 ? imcgerButtonFG : 'inherit';
+
 			quoteButton.style.margin  = '0 -' + styleData.padBottom + 'px -' + styleData.padBottom + 'px -' + styleData.padBottom + 'px';
 			quoteButton.style.padding = styleData.padBottom + 'px';
 			quoteButton.innerHTML	  = imcgerButtonDown;
-			quoteButton.style.display = "block";
+			quoteButton.style.display = 'block';
 
-			/* Quote Box verkleinern */
-			quoteText.style.height = styleData.maxQuoteHeigth + "px";
+			/* Collapse quote box. */
+			quoteText.style.height = styleData.maxQuoteHeigth + 'px';
 		}
 	}
 }
 
-/* Initialisierungsroutine aufrufen */
+/* Call initialization routine. */
 initQuoteBox();
 
-/* Grösse der Quotebox anpassen wenn das Browserfenster seine grösse ändert */
-window.addEventListener("resize", resizeQuote);
+/* Resize the quote box when the browser window changes its size. */
+window.addEventListener('resize', resizeQuote);

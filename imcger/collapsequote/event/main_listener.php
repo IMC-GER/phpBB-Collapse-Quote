@@ -45,26 +45,26 @@ class main_listener implements EventSubscriberInterface
 
 	public static function getSubscribedEvents()
 	{
-		return array(
+		return [
 			'core.viewtopic_assign_template_vars_before' => 'viewtopic_assign_template_vars',
 			'core.text_formatter_s9e_configure_after' 	 => 'configure_textformatter',
-		);
+		];
 	}
 
 	public function viewtopic_assign_template_vars()
 	{
-		// Add Fancybox language file
+		/* Add language file */
 		$this->language->add_lang('collapsequote_lang','imcger/collapsequote');
 
 		$imcger_collapsequote_visible_lines	= $this->config['imcger_collapsequote_visible_lines'];
 		$imcger_collapsequote_button_fg		= $this->config['imcger_collapsequote_button_fg'];
 		$imcger_collapsequote_button_bg		= $this->config['imcger_collapsequote_button_bg'];
 
-		$this->template->assign_vars( array(
+		$this->template->assign_vars([
 			'IMCGER_COLLAPSEQUOTE_VISIBLE_LINES' => $imcger_collapsequote_visible_lines,
 			'IMCGER_COLLAPSEQUOTE_BUTTON_FG'	 => $imcger_collapsequote_button_fg,
 			'IMCGER_COLLAPSEQUOTE_BUTTON_BG'	 => $imcger_collapsequote_button_bg,
-		));
+		]);
 	}
 
 	/**

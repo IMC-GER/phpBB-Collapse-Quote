@@ -45,11 +45,11 @@ class main_module
 			trigger_error($user->lang('ACP_COLLAPSEQUOTE_SETTING_SAVED') . adm_back_link($this->u_action));
 		}
 
-		$template->assign_vars(array(
+		$template->assign_vars([
 			'U_ACTION'								=> $this->u_action,
 			'IMCGER_COLLAPSEQUOTE_VISIBLE_LINES'	=> $config['imcger_collapsequote_visible_lines'],
 			'IMCGER_COLLAPSEQUOTE_BUTTON_BG'		=> $config['imcger_collapsequote_button_bg'],
 			'IMCGER_COLLAPSEQUOTE_BUTTON_FG'		=> $config['imcger_collapsequote_button_fg'],
-		));
+		]);
 	}
 }

@@ -18,16 +18,16 @@ class main_info
 {
 	public function module()
 	{
-		return array(
+		return [
 			'filename'	=> '\imcger\collapsequote\acp\main_module',
 			'title'		=> 'ACP_COLLAPSEQUOTE_TITLE',
-			'modes'		=> array(
-				'settings'	=> array(
+			'modes'		=> [
+				'settings'	=> [
 					'title'	=> 'ACP_COLLAPSEQUOTE_SETTINGS',
 					'auth'	=> 'ext_imcger/collapsequote && acl_a_board',
-					'cat'	=> array('ACP_COLLAPSEQUOTE_TITLE'),
-				),
-			),
-		);
+					'cat'	=> ['ACP_COLLAPSEQUOTE_TITLE',],
+				],
+			],
+		];
 	}
 }

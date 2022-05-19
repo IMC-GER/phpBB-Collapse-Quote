@@ -20,6 +20,11 @@ Go to "ACP" > "Customise" > "Manage extensions" and enable the "Collapse Quote" 
 
 ## Changelog
 
+### v1.0.0 (17-05-2022)
+- If the upper part of the quote box is outside the viewport, scroll it to top position wenn collapse.
+- Language adjustments
+- Add version check
+
 ### v0.4.2 (19-03-2022)
 - Cleanup code
 
