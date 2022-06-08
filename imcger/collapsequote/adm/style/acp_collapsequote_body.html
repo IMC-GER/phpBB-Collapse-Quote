@@ -14,6 +14,7 @@
 				<input id="imcger_collapsequote_visible_lines" name="imcger_collapsequote_visible_lines" value='{{ IMCGER_COLLAPSEQUOTE_VISIBLE_LINES }}' type="number" min="2" max="100" size="6" maxlength="6" />
 			</dd>
 		</dl>
+		<hr>
 		<dl>			
 			<dt><label for="imcger_collapsequote_button_fg">{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR') ~ lang('COLON') }}</label><br /><span>{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR_DESC') }}</span></dt>
 			<dd>
@@ -24,6 +25,19 @@
 			<dt><label for="imcger_collapsequote_button_bg">{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR') ~ lang('COLON') }}</label><br /><span>{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR_DESC') }}</span></dt>
 			<dd>
 				<input id="imcger_collapsequote_button_bg" name="imcger_collapsequote_button_bg" type="text" value="{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG }}" size="6" maxlength="6" {% if IMCGER_COLLAPSEQUOTE_BUTTON_BG %}style="border-right:20px solid #{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG }}"{% endif %} />
+			</dd>
+		</dl>
+		<hr>
+		<dl>			
+			<dt><label for="imcger_collapsequote_button_fg_hover">{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER') ~ lang('COLON') }}</label><br /><span>{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER_DESC') }}</span></dt>
+			<dd>
+				<input id="imcger_collapsequote_button_fg_hover" name="imcger_collapsequote_button_fg_hover" type="text" value="{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER }}" size="6" maxlength="6" {% if IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER %}style="border-right:20px solid #{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER }}"{% endif %} />
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="imcger_collapsequote_button_bg_hover">{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER') ~ lang('COLON') }}</label><br /><span>{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER_DESC') }}</span></dt>
+			<dd>
+				<input id="imcger_collapsequote_button_bg_hover" name="imcger_collapsequote_button_bg_hover" type="text" value="{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER }}" size="6" maxlength="6" {% if IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER %}style="border-right:20px solid #{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER }}"{% endif %} />
 			</dd>
 		</dl>
 	</fieldset>

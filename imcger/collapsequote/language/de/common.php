@@ -51,4 +51,9 @@ $lang = array_merge($lang, [
 	'COLLAPSEQUOTE_BUTTON_FG_COLOR_DESC' => 'Auswahl der Schriftfarbe des Button zum Max-/Minimieren der Quotebox. Bei leerem Feld wird die Systemfarbe verwendet.',
 	'COLLAPSEQUOTE_BUTTON_BG_COLOR' => 'Button Hintergrundfarbe',
 	'COLLAPSEQUOTE_BUTTON_BG_COLOR_DESC' => 'Auswahl der Button Grundfarbe. Bei leerem Feld wird die Systemfarbe verwendet.',
+
+	'COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER' => 'Button Vordergrundfarbe für den Mouseover-Effekt',
+	'COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER_DESC' => 'Auswahl der Schriftfarbe des Button zum Max-/Minimieren der Quotebox beim überfahren mit der Maus. Bei leerem Feld tritt keine Farbänderung ein.',
+	'COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER' => 'Button Hintergrundfarbe für den Mouseover-Effekt',
+	'COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER_DESC' => 'Auswahl der Button Grundfarbe beim überfahren mit der Maus. Bei leerem Feld tritt keine Farbänderung ein.',
 ]);

@@ -51,4 +51,9 @@ $lang = array_merge($lang, [
 	'COLLAPSEQUOTE_BUTTON_FG_COLOR_DESC' => 'Selection of the font color of the button to max-/minimize the quote box. If the field is empty, the system color is used.',
 	'COLLAPSEQUOTE_BUTTON_BG_COLOR' => 'Background button color',
 	'COLLAPSEQUOTE_BUTTON_BG_COLOR_DESC' => 'Selection of the background button color.  If the field is empty, the system color is used.',
+
+	'COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER' => 'Foreground button color for mouseover-effect',
+	'COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER_DESC' => 'Selection of the font color of the button for enlarging or reducing the quotation mark field, when moving the mouse over it. No color change occurs if the field is empty.',
+	'COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER' => 'Background button color for mouseover-effect',
+	'COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER_DESC' => 'Selection of the button background color, when moving the mouse over it. No color change occurs if the field is empty.',
 ]);

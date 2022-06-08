@@ -15,13 +15,24 @@ If quotes are very long, the box is displayed in a smaller size. A mouse click d
 - phpBB 3.2.0 or higher
 
 ## Installation
-Copy the extension to `phpBB3/ext/imcger/collapsequote`.
-Go to "ACP" > "Customise" > "Manage extensions" and enable the "Collapse Quote" extension.
+- Copy the extension to `phpBB3/ext/imcger/collapsequote`.
+- Go to "ACP" > "Customise" > "Manage extensions" and enable the "Collapse Quote" extension.
+
+## Update
+- Navigate in the ACP to `Customise -> Manage extensions`.
+- Click the `Disable` link for "Collapse Quote".
+- Copy the extension to `phpBB3/ext/imcger/collapsequote`.
+- Go to "ACP" > "Customise" > "Manage extensions" and enable the "Collapse Quote" extension.
 
 ## Changelog
 
+### v1.1.0 (07-06-2022)
+- Minore code change
+- Hover effect for togglebutton
+- Bug: ACP select foreground color
+
 ### v1.0.1 (19-05-2022)
-- ACP display error
+- Bug: ACP display error
 
 ### v1.0.0 (17-05-2022)
 - If the upper part of the quote box is outside the viewport, scroll it to top position wenn collapse.

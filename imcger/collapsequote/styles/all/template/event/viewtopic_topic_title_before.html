@@ -1,10 +1,18 @@
-{% INCLUDECSS '@imcger_collapsequote/quote.css' %}
-{% INCLUDEJS '@imcger_collapsequote/quote.js' %}
+{% INCLUDECSS "@imcger_collapsequote/quote.css" %}
+{% INCLUDEJS "@imcger_collapsequote/quote.js" %}
 <script>
-	const imcgerButtonUp   = "{{ lang('COLLAPSEQUOTE_LESS')|e("js") }}";
-	const imcgerButtonDown = "{{ lang('COLLAPSEQUOTE_MORE')|e("js") }}";
+	/* Togglebutton  text */
+	const imcgerButtonUp   = '{{ lang("COLLAPSEQUOTE_LESS")|e("js") }}';
+	const imcgerButtonDown = '{{ lang("COLLAPSEQUOTE_MORE")|e("js") }}';
 
-	const imcgerVisibleLines = {{ IMCGER_COLLAPSEQUOTE_VISIBLE_LINES }};
-	const imcgerButtonFG	 = "#{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG }}";
-	const imcgerButtonBG	 = "#{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG }}";
+	/* Max height when quotebox collapse */
+	const imcgerVisibleLines = {{ IMCGER_COLLAPSEQUOTE_VISIBLE_LINES|raw }};
+
+	/* Toggelbutton colors */
+	var imcgerButtonFG = '{% if IMCGER_COLLAPSEQUOTE_BUTTON_FG|length > 3 %}#{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG|raw }}{% endif %}';
+	var imcgerButtonBG = '{% if IMCGER_COLLAPSEQUOTE_BUTTON_BG|length > 3 %}#{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG|raw }}{% endif %}';
+
+	/* Toggelbutton colors for hover effect */
+	const imcgerButtonHoverFG = '{% if IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER|length > 3 %}#{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER|raw }}{% endif %}';
+	const imcgerButtonHoverBG = '{% if IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER|length > 3 %}#{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER|raw }}{% endif %}';
 </script>

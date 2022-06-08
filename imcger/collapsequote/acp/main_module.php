@@ -41,6 +41,8 @@ class main_module
 			$config->set('imcger_collapsequote_visible_lines', $visible_lines);
 			$config->set('imcger_collapsequote_button_bg', $request->variable('imcger_collapsequote_button_bg', ''));
 			$config->set('imcger_collapsequote_button_fg', $request->variable('imcger_collapsequote_button_fg', ''));
+			$config->set('imcger_collapsequote_button_bg_hover', $request->variable('imcger_collapsequote_button_bg_hover', ''));
+			$config->set('imcger_collapsequote_button_fg_hover', $request->variable('imcger_collapsequote_button_fg_hover', ''));
 
 			trigger_error($user->lang('ACP_COLLAPSEQUOTE_SETTING_SAVED') . adm_back_link($this->u_action));
 		}
@@ -50,6 +52,8 @@ class main_module
 			'IMCGER_COLLAPSEQUOTE_VISIBLE_LINES'	=> $config['imcger_collapsequote_visible_lines'],
 			'IMCGER_COLLAPSEQUOTE_BUTTON_BG'		=> $config['imcger_collapsequote_button_bg'],
 			'IMCGER_COLLAPSEQUOTE_BUTTON_FG'		=> $config['imcger_collapsequote_button_fg'],
+			'IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER'	=> $config['imcger_collapsequote_button_bg_hover'],
+			'IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER'	=> $config['imcger_collapsequote_button_fg_hover'],
 		]);
 	}
 }

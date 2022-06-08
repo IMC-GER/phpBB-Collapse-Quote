@@ -41,6 +41,41 @@ function ColorToRGBA(color, opacity) {
 	return 'rgba(' + rgbColors[0] + ', ' + rgbColors[1] + ', ' + rgbColors[2] + ', ' + opacity + ')';
 }
 
+function addCSS() {
+	/* Set colors to the toggle button */
+	let buttonStyle = '.imcger-quote-button { color:' + imcgerButtonFG + '; background-color:' + imcgerButtonBG + '; }';
+
+	/* Add colors for the hover effect to the toggle button. */
+	if (imcgerButtonHoverFG || imcgerButtonHoverBG) {
+
+		buttonStyle += '.imcger-quote-button:hover {';
+
+		if (imcgerButtonHoverFG) {
+			buttonStyle += 'color:' + imcgerButtonHoverFG + ';';
+		}
+
+		if (imcgerButtonHoverBG) {
+			buttonStyle += 'background-color:' + imcgerButtonHoverBG + ';';
+		}
+
+		buttonStyle += '}';
+	}
+
+	/* Create style document */
+	let css = document.createElement('style');
+	css.type = 'text/css';
+
+	if (css.styleSheet) {
+		css.styleSheet.cssText = buttonStyle;
+	}
+	else {
+		css.appendChild(document.createTextNode(buttonStyle));
+	}
+
+	/* Append style to the head */
+	document.head.appendChild(css);
+}
+
 function getStyleData() {
 	let para	   = document.querySelector('blockquote');
 	let compStyles = window.getComputedStyle(para);
@@ -107,6 +142,13 @@ function initQuoteBox() {
 	/* Query properties of the phpBB style. */
 	let styleData = getStyleData();
 
+	/* Define colors for toggle button */
+	imcgerButtonBG = imcgerButtonBG ? imcgerButtonBG : styleData.bgColor;
+	imcgerButtonFG = imcgerButtonFG ? imcgerButtonFG : 'inherit';
+
+	/* Set style for toggle button */
+	addCSS();
+
 	/* Check the size of the found quote boxes and reduce them if necessary. */
 	for (i = 0; i < x.length; i++) {
 		let quoteText	= x[i].getElementsByClassName('imcger-quote-text')[0];
@@ -121,10 +163,6 @@ function initQuoteBox() {
 			quoteShadow.style.height  = styleData.shadowHeigth + 'px';
 			quoteShadow.style.bottom  = styleData.lineHeight + 'px';
 			quoteShadow.style.display = 'block';
-
-			/* Add properties to toggle button. */
-			quoteButton.style.backgroundColor = imcgerButtonBG.length > 3 ? imcgerButtonBG : styleData.bgColor;
-			quoteButton.style.color			  = imcgerButtonFG.length > 3 ? imcgerButtonFG : 'inherit';
 
 			quoteButton.style.margin  = '0 -' + styleData.padBottom + 'px -' + styleData.padBottom + 'px -' + styleData.padBottom + 'px';
 			quoteButton.style.padding = styleData.padBottom + 'px';
