@@ -1,7 +1,8 @@
 # phpBB-Collapse-Quote
 
 ## Description
-If quotes are very long, the box is displayed in a smaller size. A mouse click displays the entire quote.
+If quotes are very long, the box is displayed in a smaller size. A mouse click dis[README.md](https://github.com/IMC-GER/phpBB-Collapse-Quote/files/8873266/README.md)
+plays the entire quote.
 
 #### Settings in User Control Panel > Board preferences > Edit display options
 - No settings. 
