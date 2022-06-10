@@ -27,6 +27,9 @@ plays the entire quote.
 
 ## Changelog
 
+### v1.1.1 (10-06-2022)
+- Bug in migration
+ 
 ### v1.1.0 (07-06-2022)
 - Minore code change
 - Hover effect for togglebutton
