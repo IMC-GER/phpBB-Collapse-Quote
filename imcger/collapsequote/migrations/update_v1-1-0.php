@@ -20,7 +20,7 @@ class install_acp_module extends \phpbb\db\migration\migration
 
 	public static function depends_on()
 	{
-		return array('\imcger\collapsequote_button\migration\install_acp_module');
+		return array('\imcger\collapsequote\migration\install_acp_module');
 	}
 
 	public function update_data()
