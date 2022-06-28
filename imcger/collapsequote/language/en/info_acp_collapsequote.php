@@ -43,6 +43,6 @@ $lang = array_merge($lang, [
 	'ACP_COLLAPSEQUOTE_SETTINGS' => 'Settings',
 	'ACP_COLLAPSEQUOTE_SETTING_SAVED' => 'Collapse Quote Settings saved successfully.',
 
-	'IMCGER_IM_REQUIRE_PHPBB'	=> 'This extension requires a phpBB version greater or equal than 3.2.0 and less than 4.0.0',
-	'IMCGER_IM_REQUIRE_PHP'		=> 'This extension requires a php version greater or equal than 5.4.7 and less than 8.2.',
+	'IMCGER_REQUIRE_PHPBB'	=> 'This extension requires a phpBB version greater or equal than 3.2.0 and less than 4.0.0',
+	'IMCGER_REQUIRE_PHP'		=> 'This extension requires a php version greater or equal than 5.4.7 and less than 8.2.',
 ]);
