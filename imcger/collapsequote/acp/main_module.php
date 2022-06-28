@@ -22,38 +22,29 @@ class main_module
 
 	public function main($id, $mode)
 	{
-		global $config, $request, $template, $user;
+		global $phpbb_container, $language;
 
-		$user->add_lang_ext('imcger/collapsequote', 'common');
-		$this->tpl_name = 'acp_collapsequote_body';
-		$this->page_title = $user->lang('ACP_COLLAPSEQUOTE_TITLE');
-		add_form_key('imcger/collapsequote');
+		/* Add ACP lang file */
+		$language->add_lang('common', 'imcger/collapsequote');
 
-		if ($request->is_set_post('submit'))
+		/* Get an instance of the admin controller */
+		$admin_controller = $phpbb_container->get('imcger.collapsequote.admin.controller');
+
+		/* Make the $u_action url available in the admin controller */
+		$admin_controller->set_page_url($this->u_action);
+
+		switch ($mode)
 		{
-			if (!check_form_key('imcger/collapsequote'))
-			{
-				trigger_error('FORM_INVALID', E_USER_WARNING);
-			}
+			case 'settings':
+				/* Load a template from adm/style for our ACP page */
+				$this->tpl_name = 'acp_collapsequote_body';
 
-			$visible_lines = $request->variable('imcger_collapsequote_visible_lines', 4) < 2 ? 2 : $request->variable('imcger_collapsequote_visible_lines', 4);
+				/* Set the page title for our ACP page */
+				$this->page_title = $language->lang('ACP_COLLAPSEQUOTE_TITLE');
 
-			$config->set('imcger_collapsequote_visible_lines', $visible_lines);
-			$config->set('imcger_collapsequote_button_bg', $request->variable('imcger_collapsequote_button_bg', ''));
-			$config->set('imcger_collapsequote_button_fg', $request->variable('imcger_collapsequote_button_fg', ''));
-			$config->set('imcger_collapsequote_button_bg_hover', $request->variable('imcger_collapsequote_button_bg_hover', ''));
-			$config->set('imcger_collapsequote_button_fg_hover', $request->variable('imcger_collapsequote_button_fg_hover', ''));
-
-			trigger_error($user->lang('ACP_COLLAPSEQUOTE_SETTING_SAVED') . adm_back_link($this->u_action));
+				/* Load the display options handle in the admin controller */
+				$admin_controller->display_options();
+			break;
 		}
-
-		$template->assign_vars([
-			'U_ACTION'								=> $this->u_action,
-			'IMCGER_COLLAPSEQUOTE_VISIBLE_LINES'	=> $config['imcger_collapsequote_visible_lines'],
-			'IMCGER_COLLAPSEQUOTE_BUTTON_BG'		=> $config['imcger_collapsequote_button_bg'],
-			'IMCGER_COLLAPSEQUOTE_BUTTON_FG'		=> $config['imcger_collapsequote_button_fg'],
-			'IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER'	=> $config['imcger_collapsequote_button_bg_hover'],
-			'IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER'	=> $config['imcger_collapsequote_button_fg_hover'],
-		]);
 	}
 }

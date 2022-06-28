@@ -21,10 +21,16 @@ If quotes are very long, the box is displayed in a smaller size. A mouse click d
 ## Update
 - Navigate in the ACP to `Customise -> Manage extensions`.
 - Click the `Disable` link for "Collapse Quote".
+- Delete the `collapsequote` folder from `phpBB3/ext/imcger/`.
 - Copy the extension to `phpBB3/ext/imcger/collapsequote`.
 - Go to "ACP" > "Customise" > "Manage extensions" and enable the "Collapse Quote" extension.
 
 ## Changelog
+
+### v1.1.2 (28-06-2022) 
+- Check system requirement
+- Controller for ACP template
+- Deprecated function removed
 
 ### v1.1.1 (10-06-2022)
 - Bug in migration

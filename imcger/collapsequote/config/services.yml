@@ -1,4 +1,11 @@
 services:
+    imcger.collapsequote.admin.controller:
+        class: 'imcger\collapsequote\controller\admin_controller'
+        arguments:
+            - '@config'
+            - '@template'
+            - '@language'
+            - '@request'
     imcger.collapsequote.listener:
         class: imcger\collapsequote\event\main_listener
         arguments:
