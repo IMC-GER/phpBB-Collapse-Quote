@@ -10,6 +10,11 @@ If quotes are very long, the box is displayed in a smaller size. A mouse click d
 - Number of visible lines. 
 - Button colors.
 
+## Screenshots
+- [Administrations-Bereich](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/imgupload/de/imgupload_acp_de.jpg?raw=true)
+- [Post Quote is collapse](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/collapsequote/de/screenshot_collapse_quote_collaps.png)
+- [Post Quote is expande](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/collapsequote/de/screenshot_collapse_quote_expand.png)
+
 ## Requirements
 - php 5.4.7 or higher
 - phpBB 3.2.0 or higher
