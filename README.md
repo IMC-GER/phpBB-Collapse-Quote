@@ -11,7 +11,7 @@ If quotes are very long, the box is displayed in a smaller size. A mouse click d
 - Button colors.
 
 ## Screenshots
-- [Administrations-Bereich](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/imgupload/de/imgupload_acp_de.jpg?raw=true)
+- [ACP](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/imgupload/de/imgupload_acp_de.jpg?raw=true)
 - [Post Quote is collapse](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/collapsequote/de/screenshot_collapse_quote_collaps.png)
 - [Post Quote is expande](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/collapsequote/de/screenshot_collapse_quote_expand.png)
 
