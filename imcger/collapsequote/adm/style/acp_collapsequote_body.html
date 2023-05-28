@@ -7,45 +7,86 @@
 <form id="acp_board" method="post" action="{U_ACTION}">
 
 	<fieldset>
-		<legend>{{ lang('COLLAPSEQUOTE_SETTINGS_STYLE') }}</legend>
+		<legend>{{ lang('COLLAPSEQUOTE_SETTINGS_USER') }}</legend>
+		<dl>
+			<dt><label for="imcger_collapsequote_aktive">{{ lang('COLLAPSEQUOTE_ACTIVE') ~ lang('COLON') }}</label><br><span>{{ lang('COLLAPSEQUOTE_ACTIVE_DESC') }}</span></dt>
+			<dd>
+				{{ _self.switch('imcger_collapsequote_aktive', IMCGER_COLLAPSEQUOTE_AKTIVE) }}
+			</dd>
+		</dl>
 		<dl>
 			<dt><label for="imcger_collapsequote_visible_lines">{{ lang('COLLAPSEQUOTE_VISIBLE_LINES') }} {{ lang('COLON') }}</label><br><span>{{ lang('COLLAPSEQUOTE_VISIBLE_LINES_DESC') }}</span></dt>
 			<dd>
-				<input id="imcger_collapsequote_visible_lines" name="imcger_collapsequote_visible_lines" value='{{ IMCGER_COLLAPSEQUOTE_VISIBLE_LINES }}' type="number" min="2" max="100" size="6" maxlength="6" />
-			</dd>
-		</dl>
-		<hr>
-		<dl>			
-			<dt><label for="imcger_collapsequote_button_fg">{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR') ~ lang('COLON') }}</label><br /><span>{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR_DESC') }}</span></dt>
-			<dd>
-				<input id="imcger_collapsequote_button_fg" name="imcger_collapsequote_button_fg" type="text" value="{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG }}" size="6" maxlength="6" {% if IMCGER_COLLAPSEQUOTE_BUTTON_FG %}style="border-right:20px solid #{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG }}"{% endif %} />
+				<input name="imcger_collapsequote_visible_lines" value='{{ IMCGER_COLLAPSEQUOTE_VISIBLE_LINES }}' type="number" min="2" max="999" size="4" maxlength="3" >
 			</dd>
 		</dl>
 		<dl>
-			<dt><label for="imcger_collapsequote_button_bg">{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR') ~ lang('COLON') }}</label><br /><span>{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR_DESC') }}</span></dt>
+			<dt><label for="imcger_collapsequote_text_top">{{ lang('COLLAPSEQUOTE_TEXT_TOP') ~ lang('COLON') }}</label><br><span>{{ lang('COLLAPSEQUOTE_TEXT_TOP_DESC_ACP') }}</span></dt>
 			<dd>
-				<input id="imcger_collapsequote_button_bg" name="imcger_collapsequote_button_bg" type="text" value="{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG }}" size="6" maxlength="6" {% if IMCGER_COLLAPSEQUOTE_BUTTON_BG %}style="border-right:20px solid #{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG }}"{% endif %} />
+				{{ _self.switch('imcger_collapsequote_text_top', IMCGER_COLLAPSEQUOTE_TEXT_TOP) }}
 			</dd>
 		</dl>
 		<hr>
-		<dl>			
-			<dt><label for="imcger_collapsequote_button_fg_hover">{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER') ~ lang('COLON') }}</label><br /><span>{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER_DESC') }}</span></dt>
-			<dd>
-				<input id="imcger_collapsequote_button_fg_hover" name="imcger_collapsequote_button_fg_hover" type="text" value="{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER }}" size="6" maxlength="6" {% if IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER %}style="border-right:20px solid #{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER }}"{% endif %} />
-			</dd>
-		</dl>
 		<dl>
-			<dt><label for="imcger_collapsequote_button_bg_hover">{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER') ~ lang('COLON') }}</label><br /><span>{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER_DESC') }}</span></dt>
+			<dt><label for="imcger_collapsequote_overwrite_userset">{{ lang('COLLAPSEQUOTE_OVERWRITE_USERSET') ~ lang('COLON') }}</label><br><span>{{ lang('COLLAPSEQUOTE_OVERWRITE_USERSET_DEC') }}</span></dt>
 			<dd>
-				<input id="imcger_collapsequote_button_bg_hover" name="imcger_collapsequote_button_bg_hover" type="text" value="{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER }}" size="6" maxlength="6" {% if IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER %}style="border-right:20px solid #{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER }}"{% endif %} />
+				{{ _self.switch('imcger_collapsequote_overwrite_userset', S_IMCGER_OVERWRITE_USERSET) }}
 			</dd>
 		</dl>
 	</fieldset>
 
-	<fieldset class="submit-buttons">
-		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />
-		{S_FORM_TOKEN}
+	<fieldset>
+		<legend>{{ lang('COLLAPSEQUOTE_SETTINGS_STYLE') }}</legend>
+		<dl>
+			<dt><label for="imcger_collapsequote_button_fg">{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR') ~ lang('COLON') }}</label><br ><span>{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR_DESC') }}</span></dt>
+			<dd>
+				<input id="imcger_collapsequote_button_fg" name="imcger_collapsequote_button_fg" type="text" value="{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG }}" size="6" maxlength="6" {% if IMCGER_COLLAPSEQUOTE_BUTTON_FG %}style="border-right:20px solid #{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG }}"{% endif %} >
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="imcger_collapsequote_button_bg">{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR') ~ lang('COLON') }}</label><br ><span>{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR_DESC') }}</span></dt>
+			<dd>
+				<input id="imcger_collapsequote_button_bg" name="imcger_collapsequote_button_bg" type="text" value="{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG }}" size="6" maxlength="6" {% if IMCGER_COLLAPSEQUOTE_BUTTON_BG %}style="border-right:20px solid #{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG }}"{% endif %} >
+			</dd>
+		</dl>
+		<hr>
+		<dl>
+			<dt><label for="imcger_collapsequote_button_fg_hover">{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER') ~ lang('COLON') }}</label><br ><span>{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER_DESC') }}</span></dt>
+			<dd>
+				<input id="imcger_collapsequote_button_fg_hover" name="imcger_collapsequote_button_fg_hover" type="text" value="{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER }}" size="6" maxlength="6" {% if IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER %}style="border-right:20px solid #{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER }}"{% endif %} >
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="imcger_collapsequote_button_bg_hover">{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER') ~ lang('COLON') }}</label><br ><span>{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER_DESC') }}</span></dt>
+			<dd>
+				<input id="imcger_collapsequote_button_bg_hover" name="imcger_collapsequote_button_bg_hover" type="text" value="{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER }}" size="6" maxlength="6" {% if IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER %}style="border-right:20px solid #{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER }}"{% endif %} >
+			</dd>
+		</dl>
 	</fieldset>
+
+	<fieldset>
+		<legend>{{ lang('ACP_SUBMIT_CHANGES') }}</legend>
+		<p class="submit-buttons">
+			<button class="button1" type="submit" name="action" value="write_data">{{ lang('SUBMIT') }}</button>&nbsp;
+			<button class="button2" type="{{ S_IMCGER_RESET_BUTTON ? 'reset' : 'submit' }}"  name="action" value="default">{{ lang('RESET') }}</button>
+		</p>
+	</fieldset>
+
+	{{ S_FORM_TOKEN }}
 </form>
 
+<p class="imcger-copyright">
+	{{ IMCGER_COLLAPSEQUOTE_TITLE }} v{{ IMCGER_COLLAPSEQUOTE_EXT_VER }} &copy; IMC-Ger<br>
+	{{ lang('ACP_IMCGER_LANG_DESC') }} v{{ lang('ACP_IMCGER_LANG_EXT_VER') }} &bull; {{ lang('ACP_IMCGER_LANG_AUTHOR') }}
+</p>
+
 {% include 'overall_footer.html' %}
+
+{% INCLUDECSS '@imcger_collapsequote/acp_toggle.css' %}
+{% INCLUDECSS '@imcger_collapsequote/acp_collapsequote.css' %}
+
+{% macro switch(name, checked = false) %}
+{% apply spaceless %}
+	<input type="checkbox" class="toggle" id="{{ name }}" name="{{ name }}" value="1"{{ checked ? ' checked' }}>
+{% endapply  %}
+{% endmacro %}

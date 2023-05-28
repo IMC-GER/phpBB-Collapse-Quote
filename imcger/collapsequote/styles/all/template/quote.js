@@ -77,25 +77,26 @@ function addCSS() {
 }
 
 function getStyleData() {
-	let para	   = document.querySelector('blockquote');
-	let compStyles = window.getComputedStyle(para);
-	let lineHeight = parseInt(compStyles.getPropertyValue('line-height'));
-	let paddingTop = parseInt(compStyles.getPropertyValue('padding-top'));
-	let paddingBot = parseInt(compStyles.getPropertyValue('padding-bottom'));
-	let bgColor	   = compStyles.getPropertyValue('background-color');
-	let maxQuoteHeigth = (imcgerVisibleLines * lineHeight) + paddingTop + paddingBot;
-	let shadowLines	   = imcgerVisibleLines > 4 ? 4 : imcgerVisibleLines;
-	let shadowHeigth   =  shadowLines * lineHeight;
+	let para			= document.querySelector('blockquote'),
+		compStyles		= window.getComputedStyle(para),
+		lineHeight		= Math.ceil(parseFloat(compStyles.getPropertyValue('line-height'))),
+		paddingTop		= parseInt(compStyles.getPropertyValue('padding-top')),
+		paddingBottom	= parseInt(compStyles.getPropertyValue('padding-bottom')),
+		bgColor	   		= compStyles.getPropertyValue('background-color'),
+		maxQuoteHeigth	= (imcgerVisibleLines * lineHeight),
+		shadowLines		= imcgerVisibleLines > 4 ? 4 : imcgerVisibleLines,
+		shadowHeigth	= shadowLines * lineHeight,
+		shadowHeigthTop	= (shadowLines + 1) * lineHeight;
 
-	return {'bgColor': bgColor, 'lineHeight': lineHeight, 'shadowHeigth': shadowHeigth, 'maxQuoteHeigth': maxQuoteHeigth, 'padBottom': paddingBot};
+	return {'bgColor': bgColor, 'lineHeight': lineHeight, 'shadowHeigthTop': shadowHeigthTop, 'shadowHeigth': shadowHeigth, 'maxQuoteHeigth': maxQuoteHeigth, 'paddingBottom': paddingBottom, 'paddingTop': paddingTop};
 }
 
 function toggleQuote(quoteButton) {
-	let styleData	 = getStyleData();
-	let quoteBox	 = quoteButton.previousSibling;
-	let quoteBoxRect = quoteBox.getBoundingClientRect();
-	let quoteText	 = quoteBox.firstChild;
-	let quoteShadow	 = quoteBox.lastChild;
+	let styleData	 = getStyleData(),
+		quoteBox	 = quoteButton.previousSibling,
+		quoteBoxRect = quoteBox.getBoundingClientRect(),
+		quoteTextBox = quoteBox.firstChild,
+		quoteShadow	 = quoteBox.lastChild;
 
 	/* Collapse the quotebox */
 	if (quoteShadow.style.display == 'none') {
@@ -106,13 +107,13 @@ function toggleQuote(quoteButton) {
 		/* If the upper part of the quote box is outside the viewport scroll it to position 0 */
 		if (quoteBoxRect.top < 0) {
 			document.getElementsByTagName('html')[0].style.scrollBehavior = 'smooth';
-			window.scrollBy(0, quoteBoxRect.top);
+			window.scrollBy(0, quoteBoxRect.top - (styleData.lineHeight + (2 * styleData.paddingTop)));
 		}
 	}
 	/* Expand the quotebox */
 	else {
-		quoteBox.style.height	  = quoteText.offsetHeight + 'px'; // This way is importent for the animation (CSS transition)
-		quoteShadow.style.display = 'none';
+		quoteBox.style.height	  = quoteTextBox.offsetHeight + 'px'; // This way is importent for the animation (CSS transition)
+		setTimeout(function() { quoteShadow.style.display = 'none'; }, 500);
 		quoteButton.innerHTML	  = imcgerButtonUp;
 	}
 }
@@ -151,26 +152,46 @@ function initQuoteBox() {
 
 	/* Check the size of the found quote boxes and reduce them if necessary. */
 	for (i = 0; i < x.length; i++) {
-		let quoteText	= x[i].getElementsByClassName('imcger-quote-text')[0];
+		let quoteTextBox	= x[i].getElementsByClassName('imcger-quote-text')[0];
 
 		/* If Quotebox is too big reduce the size of the box and show shadow and button. */
-		if (parseInt(quoteText.offsetHeight) > styleData.maxQuoteHeigth) {
-			let quoteShadow = quoteText.lastChild;
-			let quoteButton = quoteText.nextSibling;
+		if (parseInt(quoteTextBox.offsetHeight) > styleData.maxQuoteHeigth) {
+			let quoteText	= quoteTextBox.firstChild,
+				quoteShadow = quoteTextBox.lastChild,
+				quoteButton = quoteTextBox.nextSibling;
 
-			/* Add properties to the shadow element. */
-			quoteShadow.style.backgroundImage = 'linear-gradient(' + ColorToRGBA(styleData.bgColor, 0) + ',' + ColorToRGBA(styleData.bgColor, 0.8) + ' 70%,' + ColorToRGBA(styleData.bgColor, 1) + ')';
-			quoteShadow.style.height  = styleData.shadowHeigth + 'px';
-			quoteShadow.style.bottom  = styleData.lineHeight + 'px';
-			quoteShadow.style.display = 'block';
+			if (imcgerTextTop) {
+				/* Add properties to the shadow on the bottom of quotebox */
+				quoteShadow.style.backgroundImage = 'linear-gradient(' + ColorToRGBA(styleData.bgColor, 0) + ',' + ColorToRGBA(styleData.bgColor, 0.8) + ' 70%,' + ColorToRGBA(styleData.bgColor, 1) + ')';
+				quoteShadow.style.height  = styleData.shadowHeigth + 'px';
+				quoteShadow.style.bottom  = styleData.lineHeight + 'px';
+				quoteShadow.style.display = 'block';
+			} else {
+				/* Add properties to the shadow on the top of quotebox */
+				citeElem = x[i].querySelector('blockquote cite');
+				if (citeElem) {
+					citeElem.style.backgroundColor = styleData.bgColor;
+					citeElem.style.zIndex = 1000;
+					quoteShadow.style.zIndex = 100;
+				}
+				quoteShadow.style.backgroundImage = 'linear-gradient(' + ColorToRGBA(styleData.bgColor, 1) + ' 20%,' + ColorToRGBA(styleData.bgColor, 0.8) + ' 50%,' + ColorToRGBA(styleData.bgColor, 0) + ')';
+				quoteShadow.style.height  = styleData.shadowHeigthTop + 'px';
+				quoteShadow.style.top	  = '-' + (styleData.lineHeight + styleData.paddingTop) + 'px';
+				quoteShadow.style.display = 'block';
 
-			quoteButton.style.margin  = '0 -' + styleData.padBottom + 'px -' + styleData.padBottom + 'px -' + styleData.padBottom + 'px';
-			quoteButton.style.padding = styleData.padBottom + 'px';
+				/* End of the quotetext display in the viewport */
+				quoteText.style.position = 'absolute';
+				quoteText.style.bottom	 = styleData.lineHeight + (2 * styleData.paddingBottom) + 'px';
+			}
+
+			/* Add properties to the toggelbutton of quotebox */
+			quoteButton.style.margin  = '0 -' + styleData.paddingBottom + 'px -' + styleData.paddingBottom + 'px -' + styleData.paddingBottom + 'px';
+			quoteButton.style.padding = styleData.paddingBottom + 'px';
 			quoteButton.innerHTML	  = imcgerButtonDown;
 			quoteButton.style.display = 'block';
 
 			/* Collapse quote box. */
-			quoteText.style.height = styleData.maxQuoteHeigth + 'px';
+			quoteTextBox.style.height = styleData.maxQuoteHeigth + 'px';
 		}
 	}
 }

@@ -6,11 +6,28 @@ services:
             - '@template'
             - '@language'
             - '@request'
+            - '@user'
+            - '@dbal.conn'
+            - '@ext.manager'
+
     imcger.collapsequote.listener:
         class: imcger\collapsequote\event\main_listener
         arguments:
             - '@config'
             - '@template'
             - '@language'
+            - '@user'
+        tags:
+            - { name: event.listener }
+
+    imcger.collapsequote.ucp:
+        class: 'imcger\collapsequote\event\ucp_listener'
+        arguments:
+            - '@config'
+            - '@template'
+            - '@user'
+            - '@language'
+            - '@request'
+            - '@dbal.conn'
         tags:
             - { name: event.listener }

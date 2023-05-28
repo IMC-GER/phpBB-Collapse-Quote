@@ -39,21 +39,54 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, [
-	'COLLAPSEQUOTE_TITLE' => 'Collapse Quote',
-	'COLLAPSEQUOTE_TITLE_EXPLAIN' => 'Hier können die Größe der Quotebox und die Farben des Buttons, der zur Größenänderung der Quotebox dient eingestellt werden.',
 
-	'COLLAPSEQUOTE_SETTINGS_STYLE' => 'Einstellungen',
+	// Language pack author
+	'ACP_IMCGER_LANG_DESC'						=> 'Deutsch (Du)',
+	'ACP_IMCGER_LANG_EXT_VER' 					=> '1.2.0',
+	'ACP_IMCGER_LANG_AUTHOR' 					=> 'IMC-Ger',
 
-	'COLLAPSEQUOTE_VISIBLE_LINES' => 'Sichtbare Zeilen',
-	'COLLAPSEQUOTE_VISIBLE_LINES_DESC' => 'Anzahl der sichtbaren Zeilen der Quotebox im minimierten Zustand.',
+	// Message text
+	'COLLAPSEQUOTE_SETTING_SAVED'				=> 'Die Einstellungen wurden erfolgreich gespeichert.',
+	'COLLAPSEQUOTE_USER_SETTING_SAVED'			=> 'Die Einstellungen wurden für alle Benutzern erfolgreich gespeichert.',
+	'COLLAPSEQUOTE_DEFAULT_SETTING_SAVED'		=> 'Die Standarteinstellungen für neue Benutzer und Gäste wurden erfolgreich gespeichert.',
 
-	'COLLAPSEQUOTE_BUTTON_FG_COLOR' => 'Button Vordergrundfarbe',
-	'COLLAPSEQUOTE_BUTTON_FG_COLOR_DESC' => 'Auswahl der Schriftfarbe des Button zum Max-/Minimieren der Quotebox. Bei leerem Feld wird die Systemfarbe verwendet.',
-	'COLLAPSEQUOTE_BUTTON_BG_COLOR' => 'Button Hintergrundfarbe',
-	'COLLAPSEQUOTE_BUTTON_BG_COLOR_DESC' => 'Auswahl der Button Grundfarbe. Bei leerem Feld wird die Systemfarbe verwendet.',
+	// Confirm Box
+	'COLLAPSEQUOTE_SAVE'						=> 'Speichern',
+	'COLLAPSEQUOTE_USER_SET'					=> 'Bitte bestätigen',
+	'COLLAPSEQUOTE_USER_SET_CONFIRM'			=> 'Bist du dir sicher dass du die Benutzereinstellungen überschreiben möchtest?<br><br>Dadurch werden die Einstellungen aller Benutzer mit deinen Vorgaben überschrieben.<br><strong>Dieser Vorgang kann nicht rückgängig gemacht werden!</strong>',
 
-	'COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER' => 'Button Vordergrundfarbe für den Mouseover-Effekt',
-	'COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER_DESC' => 'Auswahl der Schriftfarbe des Button zum Max-/Minimieren der Quotebox beim überfahren mit der Maus. Bei leerem Feld tritt keine Farbänderung ein.',
-	'COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER' => 'Button Hintergrundfarbe für den Mouseover-Effekt',
-	'COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER_DESC' => 'Auswahl der Button Grundfarbe beim überfahren mit der Maus. Bei leerem Feld tritt keine Farbänderung ein.',
+	// Extension description
+	'COLLAPSEQUOTE_TITLE'						=> 'Collapse Quote',
+	'COLLAPSEQUOTE_TITLE_EXPLAIN'				=> 'Hier können die Größe des Zitatfeldes und die Farben des Buttons, der zur Größenänderung der Zitate dient, eingestellt werden.',
+
+	// User settings
+	'COLLAPSEQUOTE_SETTINGS_USER'				=> 'Einstellungen für Gäste und neue Benutzer',
+
+	'COLLAPSEQUOTE_ACTIVE'						=> 'Zitate minimieren',
+	'COLLAPSEQUOTE_ACTIVE_DESC'					=> 'Die Zitate werden auf die Anzahl der sichtbaren Zeilen minimiert und können mit einem Mausklick vollständig angezeigt werden.',
+
+	'COLLAPSEQUOTE_VISIBLE_LINES'				=> 'Sichtbare Textzeilen',
+	'COLLAPSEQUOTE_VISIBLE_LINES_DESC'			=> 'Anzahl der sichtbaren Textzeilen der Zitate im minimierten Zustand.',
+
+	'COLLAPSEQUOTE_TEXT_TOP'					=> 'Textausrichtung',
+	'COLLAPSEQUOTE_TEXT_TOP_DESC'				=> 'Bei der Auswahl von "Oben" werden im minimierten Zustand die ersten Textzeilen angezeigt. Bei "Unten" die letzten Zeilen.',
+	'COLLAPSEQUOTE_TEXT_TOP_DESC_ACP'			=> 'Bei Aktivierung werden im minimierten Zustand die ersten Zeilen angezeigt. Bei Deaktivierung die letzten Zeilen.',
+	'TOP'										=> 'Oben',
+	'BOTTOM'									=> 'Unten',
+
+	'COLLAPSEQUOTE_OVERWRITE_USERSET'			=> 'Benutzereinstellungen überschreiben',
+	'COLLAPSEQUOTE_OVERWRITE_USERSET_DEC'		=> 'Bei dieser Auswahl werden die Einstellungen aller Benutzer überschrieben. Bei der Auswahl "Aus" werden nur Standartwerte für neue Benutzer und Gäste gesetzt.',
+
+	// General settings
+	'COLLAPSEQUOTE_SETTINGS_STYLE'				=> 'Einstellungen',
+
+	'COLLAPSEQUOTE_BUTTON_FG_COLOR'				=> 'Button Vordergrundfarbe',
+	'COLLAPSEQUOTE_BUTTON_FG_COLOR_DESC'		=> 'Auswahl der Schriftfarbe des Button zum Max-/Minimieren der Zitatfelder. Bei leerem Feld wird die Systemfarbe verwendet.',
+	'COLLAPSEQUOTE_BUTTON_BG_COLOR'				=> 'Button Hintergrundfarbe',
+	'COLLAPSEQUOTE_BUTTON_BG_COLOR_DESC'		=> 'Auswahl der Button Grundfarbe. Bei leerem Feld wird die Systemfarbe verwendet.',
+
+	'COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER'		=> 'Button Vordergrundfarbe für den Mouseover-Effekt',
+	'COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER_DESC'	=> 'Auswahl der Schriftfarbe des Button zum Max-/Minimieren der Zitatfelder beim Überfahren mit der Maus. Bei leerem Feld tritt keine Farbänderung ein.',
+	'COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER'		=> 'Button Hintergrundfarbe für den Mouseover-Effekt',
+	'COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER_DESC'	=> 'Auswahl der Button Grundfarbe beim überfahren mit der Maus. Bei leerem Feld tritt keine Farbänderung ein.',
 ]);

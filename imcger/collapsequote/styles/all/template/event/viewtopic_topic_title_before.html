@@ -1,3 +1,4 @@
+{% if IMCGER_COLLAPSEQUOTE_ACTIVE %}
 {% INCLUDECSS "@imcger_collapsequote/quote.css" %}
 {% INCLUDEJS "@imcger_collapsequote/quote.js" %}
 <script>
@@ -8,6 +9,9 @@
 	/* Max height when quotebox collapse */
 	const imcgerVisibleLines = {{ IMCGER_COLLAPSEQUOTE_VISIBLE_LINES|raw }};
 
+	/* Display first or last lines if quotebox collapse */
+	const imcgerTextTop = {{ IMCGER_COLLAPSEQUOTE_TEXT_TOP|raw }};
+
 	/* Toggelbutton colors */
 	var imcgerButtonFG = '{% if IMCGER_COLLAPSEQUOTE_BUTTON_FG|length > 3 %}#{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG|raw }}{% endif %}';
 	var imcgerButtonBG = '{% if IMCGER_COLLAPSEQUOTE_BUTTON_BG|length > 3 %}#{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG|raw }}{% endif %}';
@@ -16,3 +20,4 @@
 	const imcgerButtonHoverFG = '{% if IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER|length > 3 %}#{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER|raw }}{% endif %}';
 	const imcgerButtonHoverBG = '{% if IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER|length > 3 %}#{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER|raw }}{% endif %}';
 </script>
+{% endif %}

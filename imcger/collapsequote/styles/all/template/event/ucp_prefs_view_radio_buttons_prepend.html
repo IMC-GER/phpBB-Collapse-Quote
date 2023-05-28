@@ -1,0 +1,21 @@
+		<dl>
+			<dt><label for="user_collapsequote_aktive">{{ lang('COLLAPSEQUOTE_ACTIVE') ~ lang('COLON') }}</label></dt>
+			<dd>
+				<label><input type="radio" name="user_collapsequote_aktive" value="1" {{ UCP_COLLAPSEQUOTE_AKTIVE ? 'checked' }} > {{ lang('ENABLED') }}</label>
+				<label><input type="radio" name="user_collapsequote_aktive" value="0" {{ !UCP_COLLAPSEQUOTE_AKTIVE ? 'checked' }} > {{ lang('DISABLED') }}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="user_collapsequote_lines">{{ lang('COLLAPSEQUOTE_VISIBLE_LINES') ~ lang('COLON') }}</label><br><span>{{ lang('COLLAPSEQUOTE_VISIBLE_LINES_DESC') }}</span></dt>
+			<dd>
+				<input name="user_collapsequote_lines" value="{{ UCP_COLLAPSEQUOTE_LINES }}" type="number" min="2" max="999" size="3" maxlength="4" >
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="user_collapsequote_text_top">{{ lang('COLLAPSEQUOTE_TEXT_TOP') ~ lang('COLON') }}</label><br><span>{{ lang('COLLAPSEQUOTE_TEXT_TOP_DESC') }}</span></dt>
+			<dd>
+				<label><input type="radio" name="user_collapsequote_text_top" value="1" {{ UCP_COLLAPSEQUOTE_TEXT_TOP ? 'checked' }} > {{ lang('TOP') }}</label>
+				<label><input type="radio" name="user_collapsequote_text_top" value="0" {{ !UCP_COLLAPSEQUOTE_TEXT_TOP ? 'checked' }} > {{ lang('BOTTOM') }}</label>
+			</dd>
+		</dl>
+		<hr>

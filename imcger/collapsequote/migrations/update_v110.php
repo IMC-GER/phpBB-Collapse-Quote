@@ -11,7 +11,7 @@
 
 namespace imcger\collapsequote\migrations;
 
-class install_acp_module extends \phpbb\db\migration\migration
+class update_v110 extends \phpbb\db\migration\migration
 {
 	public function effectively_installed()
 	{
@@ -20,14 +20,14 @@ class install_acp_module extends \phpbb\db\migration\migration
 
 	public static function depends_on()
 	{
-		return array('\imcger\collapsequote\migration\install_acp_module');
+		return ['\imcger\collapsequote\migrations\install_acp_module'];
 	}
 
 	public function update_data()
 	{
-		return array(
-			array('config.add', array('imcger_collapsequote_button_fg_hover', '')),
-			array('config.add', array('imcger_collapsequote_button_bg_hover', '')),
-		);
+		return [
+			['config.add', ['imcger_collapsequote_button_fg_hover', '']],
+			['config.add', ['imcger_collapsequote_button_bg_hover', '']],
+		];
 	}
 }

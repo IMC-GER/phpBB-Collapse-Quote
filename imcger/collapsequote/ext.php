@@ -16,37 +16,55 @@ namespace imcger\collapsequote;
  */
 class ext extends \phpbb\extension\base
 {
+	/** @var Extension name */
+	protected $ext_name = 'collapsequote';
+
+	/** @var min phpBB version */
+	protected $phpbb_min_version = '3.2.0';
+
+	/** @var max phpBB version (>= query) */
+	protected $phpbb_max_version = '4.0.0';
+
+	/** @var min PHP version */
+	protected $php_min_version = '7.0.0';
+
+	/** @var max PHP version (>= query) */
+	protected $php_max_version = '8.4.0';
+
+	/**
+	 * Check the minimum and maximum requirements.
+	 *
+	 * @return bool|string/array A error message
+	 */
 	public function is_enableable()
 	{
-		$config = $this->container->get('config');
-
-		/* If phpBB version 3.1 or less cancel */
-		if (phpbb_version_compare($config['version'], '3.2.0', '<'))
+		// If phpBB version 3.1 or less cancel
+		if (phpbb_version_compare(PHPBB_VERSION, '3.2.0', '<'))
 		{
 			return false;
 		}
 
 		$language = $this->container->get('language');
-		$language->add_lang('info_acp_collapsequote', 'imcger/collapsequote');
+		$language->add_lang('info_acp_' . $this->ext_name, 'imcger/' . $this->ext_name);
 		$error_message = [];
 
-		/* phpBB version greater equal 3.2.0 and less then 4.0 */
-		if (phpbb_version_compare($config['version'], '3.2.0', '<') || phpbb_version_compare($config['version'], '4.0.0', '>='))
+		// phpBB version greater equal $phpbb_min_version and less then $phpbb_max_version
+		if (phpbb_version_compare(PHPBB_VERSION, $this->phpbb_min_version, '<') || phpbb_version_compare(PHPBB_VERSION, $this->phpbb_max_version, '>='))
 		{
-			$error_message += ['error1' => $language->lang('IMCGER_REQUIRE_PHPBB'),];
+			$error_message = array_merge($error_message, [$language->lang('IMCGER_REQUIRE_PHPBB', $this->phpbb_min_version, $this->phpbb_max_version, PHPBB_VERSION),]);
 		}
 
-		/* php version equal or greater 5.4.7 and less 8.2 */
-		if (version_compare(PHP_VERSION, '5.4.7', '<') || version_compare(PHP_VERSION, '8.2', '>='))
+		// php version equal or greater $php_min_version and less $php_max_version
+		if (version_compare(PHP_VERSION, $this->php_min_version, '<') || version_compare(PHP_VERSION, $this->php_max_version, '>='))
 		{
-			$error_message += ['error2' => $language->lang('IMCGER_REQUIRE_PHP'),];
+			$error_message = array_merge($error_message, [$language->lang('IMCGER_REQUIRE_PHP', $this->php_min_version, $this->php_max_version, PHP_VERSION),]);
 		}
 
-		/* When phpBB older then 3.3.0 use trigger_error() for message output */
-		if (phpbb_version_compare($config['version'], '3.3.0', '<') && !empty($error_message))
+		// When phpBB v3.2 use trigger_error() for message output. For v3.1 return false.
+		if (phpbb_version_compare(PHPBB_VERSION, '3.3.0', '<') && !empty($error_message))
 		{
-			$error_message = implode('<br>', $error_message);
-			trigger_error($error_message, E_USER_WARNING);
+			$message = implode('<br>', $error_message);
+			trigger_error($message, E_USER_WARNING);
 		}
 
 		return empty($error_message) ? true : $error_message;

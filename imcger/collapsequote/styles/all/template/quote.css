@@ -20,3 +20,8 @@
 	text-align: center;
 	z-index: 999;
 }
+
+blockquote cite, .uncited::before {
+  position: relative;
+  z-index: 10;
+}

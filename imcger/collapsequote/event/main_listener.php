@@ -30,19 +30,40 @@ class main_listener implements EventSubscriberInterface
 	/** @var \phpbb\language\language */
 	protected $language;
 
+	/** @var \phpbb\user */
+	protected $user;
 
+	/**
+	 * Constructor
+	 *
+	 * @param \phpbb\config\config			$config
+	 * @param \phpbb\template\template		$template	Template object
+	 * @param \phpbb\language\language		$language	language object
+	 * @param \phpbb\user					$user		User object
+	 *
+	 * @return null
+	 */
 	public function __construct
 	(
 		\phpbb\config\config $config,
 		\phpbb\template\template $template,
-		\phpbb\language\language $language
+		\phpbb\language\language $language,
+		\phpbb\user $user
 	)
 	{
 		$this->config   = $config;
 		$this->template = $template;
 		$this->language = $language;
+		$this->user 	= $user;
 	}
 
+	/**
+	 * Assign functions defined in this class to event listeners in the core
+	 *
+	 * @return array
+	 * @static
+	 * @access public
+	 */
 	public static function getSubscribedEvents()
 	{
 		return [
@@ -51,19 +72,33 @@ class main_listener implements EventSubscriberInterface
 		];
 	}
 
+	/**
+	 * Add collapsequote language file
+	 * Set template variables
+	 *
+	 * @param	null
+	 * @return	null
+	 * @access	public
+	 */
 	public function viewtopic_assign_template_vars()
 	{
 		/* Add language file */
 		$this->language->add_lang('collapsequote_lang','imcger/collapsequote');
 
-		$imcger_collapsequote_visible_lines	  = $this->config['imcger_collapsequote_visible_lines'];
+		$guest = !$this->user->data['is_registered'] || $this->user->data['is_bot'];
+
+		$imcger_collapsequote_aktive		  = $guest ? $this->config['imcger_collapsequote_aktive'] : $this->user->data['user_collapsequote_aktive'];
+		$imcger_collapsequote_visible_lines	  = $guest ? $this->config['imcger_collapsequote_visible_lines'] : $this->user->data['user_collapsequote_lines'];
+		$imcger_collapsequote_text_top		  = $guest ? $this->config['imcger_collapsequote_text_top'] : $this->user->data['user_collapsequote_text_top'];
 		$imcger_collapsequote_button_fg		  = $this->config['imcger_collapsequote_button_fg'];
 		$imcger_collapsequote_button_bg		  = $this->config['imcger_collapsequote_button_bg'];
 		$imcger_collapsequote_button_fg_hover = $this->config['imcger_collapsequote_button_fg_hover'];
 		$imcger_collapsequote_button_bg_hover = $this->config['imcger_collapsequote_button_bg_hover'];
 
 		$this->template->assign_vars([
+			'IMCGER_COLLAPSEQUOTE_ACTIVE'		   => $imcger_collapsequote_aktive,
 			'IMCGER_COLLAPSEQUOTE_VISIBLE_LINES'   => $imcger_collapsequote_visible_lines,
+			'IMCGER_COLLAPSEQUOTE_TEXT_TOP'		   => $imcger_collapsequote_text_top,
 			'IMCGER_COLLAPSEQUOTE_BUTTON_FG'	   => $imcger_collapsequote_button_fg,
 			'IMCGER_COLLAPSEQUOTE_BUTTON_BG'	   => $imcger_collapsequote_button_bg,
 			'IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER' => $imcger_collapsequote_button_fg_hover,

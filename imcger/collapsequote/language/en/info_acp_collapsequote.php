@@ -39,10 +39,11 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, [
-	'ACP_COLLAPSEQUOTE_TITLE' => 'Collapse Quote',
-	'ACP_COLLAPSEQUOTE_SETTINGS' => 'Settings',
-	'ACP_COLLAPSEQUOTE_SETTING_SAVED' => 'Collapse Quote Settings saved successfully.',
+	'ACP_COLLAPSEQUOTE_TITLE'			=> 'Collapse Quote',
+	'ACP_COLLAPSEQUOTE_SETTINGS'		=> 'Settings',
+	'ACP_COLLAPSEQUOTE_SETTING_SAVED'	=> 'Collapse Quote Settings saved successfully.',
 
-	'IMCGER_REQUIRE_PHPBB'	=> 'This extension requires a phpBB version greater or equal than 3.2.0 and less than 4.0.0',
-	'IMCGER_REQUIRE_PHP'		=> 'This extension requires a php version greater or equal than 5.4.7 and less than 8.2.',
+	// Messages requirement check
+	'IMCGER_REQUIRE_PHPBB'	 => 'This extension requires a phpBB version greater or equal than %1$s and less than %2$s. Your version is %3$s.',
+	'IMCGER_REQUIRE_PHP'	 => 'This extension requires a php version greater or equal than %1$s and less than %2$s. Your version is %3$s.',
 ]);

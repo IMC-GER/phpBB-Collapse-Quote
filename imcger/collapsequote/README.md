@@ -4,19 +4,25 @@
 If quotes are very long, the box is displayed in a smaller size. A mouse click displays the entire quote.
 
 #### Settings in User Control Panel > Board preferences > Edit display options
-- No settings. 
+- Collapse Quote enable/disable.
+- Number of visible lines.
+- Text alignment in quotebox.
 
 #### Settings in Administration Control Panel
-- Number of visible lines. 
-- Button colors.
+- Settings for guests and new user.
+  - Collapse Quote enable/disable.
+  - Number of visible lines.
+  - Text alignment in quotebox.
+- Button colours.
 
 ## Screenshots
-- [ACP](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/imgupload/de/imgupload_acp_de.jpg?raw=true)
-- [Post Quote is collapse](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/collapsequote/de/screenshot_collapse_quote_collaps.png)
-- [Post Quote is expande](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/collapsequote/de/screenshot_collapse_quote_expand.png)
+- [ACP](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/collapsequote/en/screenshot_collapse_quote_acp.png)
+- [UCP](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/collapsequote/en/screenshot_collapse_quote_ucp.png)
+- [Post Quote is collapse](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/collapsequote/en/screenshot_collapse_quote_collaps.png)
+- [Post Quote is expande](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/collapsequote/en/screenshot_collapse_quote_expand.png)
 
 ## Requirements
-- php 5.4.7 or higher
+- php 7.0 or higher
 - phpBB 3.2.0 or higher
 
 ## Installation
@@ -31,6 +37,15 @@ If quotes are very long, the box is displayed in a smaller size. A mouse click d
 - Go to "ACP" > "Customise" > "Manage extensions" and enable the "Collapse Quote" extension.
 
 ## Changelog
+
+### v1.2.0 (28-06-2023) 
+- Added settings in UCP.
+  - Collapse Quote enable/disable.
+  - Number of visible lines.
+  - Text alignment in quotebox.
+- Added collapse Quote enable/disable.
+- Added text alignment in quotebox top/bottom.
+- Changed php min to 7.0
 
 ### v1.1.2 (28-06-2022) 
 - Check system requirement
