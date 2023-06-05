@@ -38,7 +38,10 @@ If quotes are very long, the box is displayed in a smaller size. A mouse click d
 
 ## Changelog
 
-### v1.2.0 (28-06-2023) 
+### v1.2.1 (05-06-2023) 
+- Fixed shadow overlaps dropdown menu
+
+### v1.2.0 (28-05-2023) 
 - Added settings in UCP.
   - Collapse Quote enable/disable.
   - Number of visible lines.

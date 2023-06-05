@@ -171,8 +171,6 @@ function initQuoteBox() {
 				citeElem = x[i].querySelector('blockquote cite');
 				if (citeElem) {
 					citeElem.style.backgroundColor = styleData.bgColor;
-					citeElem.style.zIndex = 1000;
-					quoteShadow.style.zIndex = 100;
 				}
 				quoteShadow.style.backgroundImage = 'linear-gradient(' + ColorToRGBA(styleData.bgColor, 1) + ' 20%,' + ColorToRGBA(styleData.bgColor, 0.8) + ' 50%,' + ColorToRGBA(styleData.bgColor, 0) + ')';
 				quoteShadow.style.height  = styleData.shadowHeigthTop + 'px';
