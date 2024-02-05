@@ -1,0 +1,43 @@
+{#
+ # Collapse Quote
+ # An extension for the phpBB Forum Software package.
+ #
+ # @copyright (c) 2022, Thorsten Ahlers
+ # @license GNU General Public License, version 2 (GPL-2.0)
+ #
+ #}
+{% if IMCGER_COLLAPSEQUOTE_ACTIVE %}
+{% INCLUDECSS "@imcger_collapsequote/quote.css" %}
+{% INCLUDEJS "@imcger_collapsequote/quote.js" %}
+<script>
+	/**
+	 * @var	imcger	object for pphpBB.
+	 */
+	if (typeof imcger != 'object') {
+		var imcger = {};
+	}
+
+	/**
+	 * @var	collapseQuote	object for Collapse Quote.
+	 */
+	 imcger.collapseQuote = {
+		// Togglebutton  text
+		buttonUp:	'{{ lang("COLLAPSEQUOTE_LESS")|e("js") }}',
+		buttonDown: '{{ lang("COLLAPSEQUOTE_MORE")|e("js") }}',
+
+		// Max height when quotebox collapse
+		visibleLines: {{ IMCGER_COLLAPSEQUOTE_VISIBLE_LINES|raw }},
+
+		// Display first or last lines if quotebox collapse
+		textTop: {{ IMCGER_COLLAPSEQUOTE_TEXT_TOP|raw }},
+
+		// Toggelbutton colors
+		buttonFG: '{% if IMCGER_COLLAPSEQUOTE_BUTTON_FG|length > 3 %}#{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG|raw }}{% endif %}',
+		buttonBG: '{% if IMCGER_COLLAPSEQUOTE_BUTTON_BG|length > 3 %}#{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG|raw }}{% endif %}',
+
+		// Toggelbutton colors for hover effect
+		buttonHoverFG: '{% if IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER|length > 3 %}#{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER|raw }}{% endif %}',
+		buttonHoverBG: '{% if IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER|length > 3 %}#{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER|raw }}{% endif %}',
+	};
+</script>
+{% endif %}

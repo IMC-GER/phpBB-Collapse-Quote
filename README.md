@@ -38,6 +38,12 @@ If quotes are very long, the box is displayed in a smaller size. A mouse click d
 
 ## Changelog
 
+### v1.3.0 (20-11-2023) 
+- Fixed don't set default userdata for guest
+- Changed JS code to class
+- Changed security question in ACP to LukeWCSphpBBConfirmBox
+- Added Works also in preview and pm now
+
 ### v1.2.1 (05-06-2023) 
 - Fixed shadow overlaps dropdown menu
 

@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * Collapse Quote
  * An extension for the phpBB Forum Software package.
  *
@@ -67,7 +66,9 @@ class main_listener implements EventSubscriberInterface
 	public static function getSubscribedEvents()
 	{
 		return [
-			'core.viewtopic_assign_template_vars_before' => 'viewtopic_assign_template_vars',
+			'core.viewtopic_assign_template_vars_before' => 'viewtopic_assign_template_vars', // topics
+			'core.ucp_pm_view_message'					 => 'viewtopic_assign_template_vars', // private message
+			'core.modify_format_display_text_before'	 => 'viewtopic_assign_template_vars', // post and pm preview
 			'core.text_formatter_s9e_configure_after' 	 => 'configure_textformatter',
 		];
 	}
@@ -82,7 +83,7 @@ class main_listener implements EventSubscriberInterface
 	 */
 	public function viewtopic_assign_template_vars()
 	{
-		/* Add language file */
+		// Add language file
 		$this->language->add_lang('collapsequote_lang','imcger/collapsequote');
 
 		$guest = !$this->user->data['is_registered'] || $this->user->data['is_bot'];
@@ -127,7 +128,7 @@ class main_listener implements EventSubscriberInterface
 							'</div>' .
 							'<div class="imcger-quote-shadow"></div>' .
 						'</div>' .
-						'<div class="imcger-quote-button" onclick="toggleQuote(this)"></div>' .
+						'<div class="imcger-quote-togglebutton"></div>' .
 					'</div>';
 
 		$configurator->tags['QUOTE']->template = str_replace('<xsl:apply-templates/>', $newquote, $default_quote_template);

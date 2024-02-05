@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * Collapse Quote
  * An extension for the phpBB Forum Software package.
  *

@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * Collapse Quote
  * An extension for the phpBB Forum Software package.
  *
@@ -42,7 +41,7 @@ $lang = array_merge($lang, [
 
 	// Language pack author
 	'ACP_IMCGER_LANG_DESC'						=> 'British English',
-	'ACP_IMCGER_LANG_EXT_VER'					=> '1.2.0',
+	'ACP_IMCGER_LANG_EXT_VER'					=> '1.3.0',
 	'ACP_IMCGER_LANG_AUTHOR'					=> 'IMC-Ger',
 
 	// Message text
@@ -51,9 +50,7 @@ $lang = array_merge($lang, [
 	'COLLAPSEQUOTE_DEFAULT_SETTING_SAVED'		=> 'The default settings for new users and guests have been saved successfully.',
 
 	// Confirm Box
-	'COLLAPSEQUOTE_SAVE'						=> 'Save',
-	'COLLAPSEQUOTE_USER_SET'					=> 'Please confirm',
-	'COLLAPSEQUOTE_USER_SET_CONFIRM'			=> 'Are you sure you want to overwrite the user settings?<br><br>This will overwrite all user settings with your defaults.<br><strong>This process cannot be undone!</strong>',
+	'COLLAPSEQUOTE_USER_SET_CONFIRM'			=> 'This setting will overwrite all user settings with your defaults.<br><strong>This process cannot be reversed!</strong>',
 
 	// Extension description
 	'COLLAPSEQUOTE_TITLE'						=> 'Collapse Quote',

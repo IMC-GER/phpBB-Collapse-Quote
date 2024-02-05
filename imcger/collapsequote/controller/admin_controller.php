@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * Collapse Quote
  * An extension for the phpBB Forum Software package.
  *
@@ -83,73 +82,23 @@ class admin_controller
 		add_form_key('imcger/collapsequote');
 
 		// Is the form being submitted to us?
-		if ($this->request->is_set_post('action'))
+		if ($this->request->is_set_post('submit'))
 		{
 			if (!check_form_key('imcger/collapsequote'))
 			{
 				trigger_error($this->language->lang('FORM_INVALID') . adm_back_link($this->u_action), E_USER_WARNING);
 			}
 
-			$action = $this->request->variable('action', 'default');
 			$overwrite_userset = $this->request->variable('imcger_collapsequote_overwrite_userset', 0);
 
-			switch ($action)
-			{
-				case 'write_data':
-					if (!$overwrite_userset)
-					{
-						$this->set_vars_config();
-						$this->set_template_vars('config');
-						trigger_error($this->language->lang('COLLAPSEQUOTE_DEFAULT_SETTING_SAVED') . adm_back_link($this->u_action));
-					}
-					else
-					{
-						if (!confirm_box(true))
-						{
-							// Request confirmation to overwrite user settings.
-							confirm_box(false, 'COLLAPSEQUOTE_USER_SET',
-										build_hidden_fields([
-											'action'								=> $action,
-											'imcger_collapsequote_aktive'			=> $this->request->variable('imcger_collapsequote_aktive', 0),
-											'imcger_collapsequote_visible_lines'	=> $this->request->variable('imcger_collapsequote_visible_lines', 0),
-											'imcger_collapsequote_text_top'			=> $this->request->variable('imcger_collapsequote_text_top', 0),
-											'imcger_collapsequote_button_bg'		=> $this->request->variable('imcger_collapsequote_button_bg', ''),
-											'imcger_collapsequote_button_fg'		=> $this->request->variable('imcger_collapsequote_button_fg', ''),
-											'imcger_collapsequote_button_bg_hover'	=> $this->request->variable('imcger_collapsequote_button_bg_hover', ''),
-											'imcger_collapsequote_button_fg_hover'	=> $this->request->variable('imcger_collapsequote_button_fg_hover', ''),
-											'imcger_collapsequote_overwrite_userset'=> $this->request->variable('imcger_collapsequote_overwrite_userset', 0),
-										]),
-										'@imcger_collapsequote/acp_collapsequote_body_confirm_box.html');
+			$this->set_vars_config();
+			$this->set_vars_userset($overwrite_userset);
 
-							$this->set_template_vars('request', false);
-						}
-						else
-						{
-							// Overwrite user setting and store to config table
-							$this->set_vars_config();
-							$this->set_vars_userset();
-							$this->set_template_vars('config');
-							trigger_error($this->language->lang('COLLAPSEQUOTE_USER_SETTING_SAVED') . adm_back_link($this->u_action));
-						}
-					}
-				break;
-
-				case 'cancel':
-					// Set template vars, after rejection to overwrite user data
-					$this->set_template_vars('request');
-				break;
-
-				default:
-					// Set template vars
-					$this->set_template_vars('config');
-				break;
-			}
+			$trigger_text = $overwrite_userset ? $this->language->lang('COLLAPSEQUOTE_USER_SETTING_SAVED') : $this->language->lang('COLLAPSEQUOTE_DEFAULT_SETTING_SAVED');
+			trigger_error($trigger_text . adm_back_link($this->u_action));
 		}
-		else
-		{
-			// Set template vars
-			$this->set_template_vars('config');
-		}
+
+		$this->set_template_vars();
 	}
 
 	/**
@@ -160,7 +109,7 @@ class admin_controller
 	 * @return null
 	 * @access protected
 	 */
-	protected function set_template_vars($get_data = 'config', $overwrite_userset = false)
+	protected function set_template_vars()
 	{
 		$metadata_manager = $this->ext_manager->create_extension_metadata_manager('imcger/collapsequote');
 
@@ -168,36 +117,18 @@ class admin_controller
 			'U_ACTION'						=> $this->u_action,
 			'IMCGER_COLLAPSEQUOTE_TITLE'	=> $metadata_manager->get_metadata('display-name'),
 			'IMCGER_COLLAPSEQUOTE_EXT_VER'	=> $metadata_manager->get_metadata('version'),
-			'S_IMCGER_OVERWRITE_USERSET'	=> $overwrite_userset,
+
+			'IMCGER_COLLAPSEQUOTE_AKTIVE'			=> $this->config['imcger_collapsequote_aktive'],
+			'IMCGER_COLLAPSEQUOTE_VISIBLE_LINES'	=> $this->config['imcger_collapsequote_visible_lines'],
+			'IMCGER_COLLAPSEQUOTE_TEXT_TOP'			=> $this->config['imcger_collapsequote_text_top'],
+			'S_IMCGER_OVERWRITE_USERSET'			=> false,
+
+			'IMCGER_COLLAPSEQUOTE_BUTTON_BG'		=> $this->config['imcger_collapsequote_button_bg'],
+			'IMCGER_COLLAPSEQUOTE_BUTTON_FG'		=> $this->config['imcger_collapsequote_button_fg'],
+			'IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER'	=> $this->config['imcger_collapsequote_button_bg_hover'],
+			'IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER'	=> $this->config['imcger_collapsequote_button_fg_hover'],
 		]);
 
-		if ($get_data == 'config')
-		{
-			$this->template->assign_vars([
-				'IMCGER_COLLAPSEQUOTE_AKTIVE'			=> $this->config['imcger_collapsequote_aktive'],
-				'IMCGER_COLLAPSEQUOTE_VISIBLE_LINES'	=> $this->config['imcger_collapsequote_visible_lines'],
-				'IMCGER_COLLAPSEQUOTE_TEXT_TOP'			=> $this->config['imcger_collapsequote_text_top'],
-				'IMCGER_COLLAPSEQUOTE_BUTTON_BG'		=> $this->config['imcger_collapsequote_button_bg'],
-				'IMCGER_COLLAPSEQUOTE_BUTTON_FG'		=> $this->config['imcger_collapsequote_button_fg'],
-				'IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER'	=> $this->config['imcger_collapsequote_button_bg_hover'],
-				'IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER'	=> $this->config['imcger_collapsequote_button_fg_hover'],
-				'S_IMCGER_RESET_BUTTON'					=> true,
-			]);
-		}
-
-		if ($get_data == 'request')
-		{
-			$this->template->assign_vars([
-				'IMCGER_COLLAPSEQUOTE_AKTIVE'			=> $this->request->variable('imcger_collapsequote_aktive', 0),
-				'IMCGER_COLLAPSEQUOTE_VISIBLE_LINES'	=> $this->request->variable('imcger_collapsequote_visible_lines', 0),
-				'IMCGER_COLLAPSEQUOTE_TEXT_TOP'			=> $this->request->variable('imcger_collapsequote_text_top', 0),
-				'IMCGER_COLLAPSEQUOTE_BUTTON_BG'		=> $this->request->variable('imcger_collapsequote_button_bg', ''),
-				'IMCGER_COLLAPSEQUOTE_BUTTON_FG'		=> $this->request->variable('imcger_collapsequote_button_fg', ''),
-				'IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER'	=> $this->request->variable('imcger_collapsequote_button_bg_hover', ''),
-				'IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER'	=> $this->request->variable('imcger_collapsequote_button_fg_hover', ''),
-				'S_IMCGER_RESET_BUTTON'					=> false,
-			]);
-		}
 	}
 
 	/**
@@ -208,8 +139,8 @@ class admin_controller
 	 */
 	protected function set_vars_config()
 	{
-		/* Show minium 2 lines in the Quotebox */
-		$visible_lines = $this->request->variable('imcger_collapsequote_visible_lines', 4) < 2 ? 2 : $this->request->variable('imcger_collapsequote_visible_lines', 4);
+		/* Show minium 4 lines in the Quotebox */
+		$visible_lines = $this->request->variable('imcger_collapsequote_visible_lines', 4) < 4 ? 4 : $this->request->variable('imcger_collapsequote_visible_lines', 4);
 
 		$this->config->set('imcger_collapsequote_aktive', $this->request->variable('imcger_collapsequote_aktive', 0));
 		$this->config->set('imcger_collapsequote_visible_lines', $visible_lines);
@@ -226,7 +157,7 @@ class admin_controller
 	 * @return null
 	 * @access protected
 	 */
-	protected function set_vars_userset()
+	protected function set_vars_userset($all_user)
 	{
 		$sql_ary = [
 			'user_collapsequote_aktive'		=> $this->config['imcger_collapsequote_aktive'],
@@ -234,9 +165,11 @@ class admin_controller
 			'user_collapsequote_text_top'	=> $this->config['imcger_collapsequote_text_top'],
 		];
 
+		$sql_where = $all_user ? '' : ' WHERE user_id = ' . ANONYMOUS;
+
 		// Upate user settings whith default data
 		$sql =	'UPDATE ' . USERS_TABLE .
-				' SET ' . $this->db->sql_build_array('UPDATE', $sql_ary);
+				' SET ' . $this->db->sql_build_array('UPDATE', $sql_ary) . $sql_where;
 
 		$this->db->sql_query($sql);
 	}

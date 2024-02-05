@@ -2,34 +2,36 @@
  Collapse Quote
 ------------------------------------- */
 
-.errorbox h1 {
-	color: #FFFFFF !important;
+/* ACP ConfirmBox (JS) */
+div[id$="_confirmbox"] {
+	max-width: 450px;
+	border: 2px solid skyblue;
+	margin: .75em .5em;
+	padding: .25em .5em;
+	border-radius: 5px;
+	-webkit-box-shadow: 2px 2px 10px 1px rgba(121, 162, 179, 0.5);
+	box-shadow: 2px 2px 10px 1px rgba(121, 162, 179, 0.5);
 }
 
-button.button1, button.button2 {
-	padding: 2px 3px;
-	border: 1px solid #666666;
-	border-radius: unset;
-	background: #EFEFEF url("./../../../../../../adm/images/bg_button.gif") repeat-x top;
+div[id$="_confirmbox"] h2 {
+	margin: 0 0 .25em 0;
 }
 
-button.button1:hover, button.button2:hover {
-	border: 1px solid #BC2A4D;
-	background: #EFEFEF url("./../../../../../../adm/images/bg_button.gif") repeat bottom;
-	color: #BC2A4D;
+div[id$="_confirmbox"] p:nth-of-type(2) {
+	text-align: center;
+	margin: 0;
+	padding: 0 4px 4px 4px;
 }
 
-button.button1 {
-	font-weight: bold;
+div[id$="_confirmbox"] input[type="button"] {
+	padding: 3px 4px;
 }
 
-.imcger-domain {
-	font-size: 1.1em;
-	line-height: 1.1em;
-	display: grid;
-	grid-template-columns: 1.1em auto;
-	gap: 0.4em;
-	margin: 0.1em;
+input[type="submit"]:disabled,
+input[type="button"]:disabled,
+input[class*="confirmbox_active"]:disabled {
+	opacity: .5;
+	cursor: not-allowed;
 }
 
 .imcger-copyright {

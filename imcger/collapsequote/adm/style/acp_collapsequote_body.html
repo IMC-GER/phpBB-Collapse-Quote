@@ -1,5 +1,5 @@
 {% include 'overall_header.html' %}
-
+{% set switch_type = TOGGLECTRL_TYPE ?? 'toggle' %}
 <h1>{{ lang('COLLAPSEQUOTE_TITLE') }}</h1>
 
 <p>{{ lang('COLLAPSEQUOTE_TITLE_EXPLAIN') }}</p>
@@ -11,7 +11,7 @@
 		<dl>
 			<dt><label for="imcger_collapsequote_aktive">{{ lang('COLLAPSEQUOTE_ACTIVE') ~ lang('COLON') }}</label><br><span>{{ lang('COLLAPSEQUOTE_ACTIVE_DESC') }}</span></dt>
 			<dd>
-				{{ _self.switch('imcger_collapsequote_aktive', IMCGER_COLLAPSEQUOTE_AKTIVE) }}
+				{{ _self.switch('imcger_collapsequote_aktive', IMCGER_COLLAPSEQUOTE_AKTIVE, switch_type) }}
 			</dd>
 		</dl>
 		<dl>
@@ -23,14 +23,15 @@
 		<dl>
 			<dt><label for="imcger_collapsequote_text_top">{{ lang('COLLAPSEQUOTE_TEXT_TOP') ~ lang('COLON') }}</label><br><span>{{ lang('COLLAPSEQUOTE_TEXT_TOP_DESC_ACP') }}</span></dt>
 			<dd>
-				{{ _self.switch('imcger_collapsequote_text_top', IMCGER_COLLAPSEQUOTE_TEXT_TOP) }}
+				{{ _self.switch('imcger_collapsequote_text_top', IMCGER_COLLAPSEQUOTE_TEXT_TOP, switch_type) }}
 			</dd>
 		</dl>
 		<hr>
 		<dl>
 			<dt><label for="imcger_collapsequote_overwrite_userset">{{ lang('COLLAPSEQUOTE_OVERWRITE_USERSET') ~ lang('COLON') }}</label><br><span>{{ lang('COLLAPSEQUOTE_OVERWRITE_USERSET_DEC') }}</span></dt>
 			<dd>
-				{{ _self.switch('imcger_collapsequote_overwrite_userset', S_IMCGER_OVERWRITE_USERSET) }}
+				{{ _self.switch('imcger_collapsequote_overwrite_userset', S_IMCGER_OVERWRITE_USERSET, switch_type) }}
+				{{ _self.confirmbox('imcger_collapsequote_overwrite_userset', lang('COLLAPSEQUOTE_USER_SET_CONFIRM')) }}
 			</dd>
 		</dl>
 	</fieldset>
@@ -67,8 +68,8 @@
 	<fieldset>
 		<legend>{{ lang('ACP_SUBMIT_CHANGES') }}</legend>
 		<p class="submit-buttons">
-			<button class="button1" type="submit" name="action" value="write_data">{{ lang('SUBMIT') }}</button>&nbsp;
-			<button class="button2" type="{{ S_IMCGER_RESET_BUTTON ? 'reset' : 'submit' }}"  name="action" value="default">{{ lang('RESET') }}</button>
+			<input class="button1" type="submit" name="submit" value="{{ lang('SUBMIT') }}">
+			<input class="button2" type="reset" name="reset" value="{{ lang('RESET') }}">
 		</p>
 	</fieldset>
 
@@ -84,9 +85,29 @@
 
 {% INCLUDECSS '@imcger_collapsequote/acp_toggle.css' %}
 {% INCLUDECSS '@imcger_collapsequote/acp_collapsequote.css' %}
+{% INCLUDEJS '@imcger_collapsequote/acp_collapsequote.js' %}
 
-{% macro switch(name, checked = false) %}
-{% apply spaceless %}
-	<input type="checkbox" class="toggle" id="{{ name }}" name="{{ name }}" value="1"{{ checked ? ' checked' }}>
-{% endapply  %}
-{% endmacro %}
+{#
+	Twig Macros
+	@copyright (c) 2023 LukeWCS, https://github.com/LukeWCS
+#}
+
+{% macro switch(name, checked = false, type = 'toggle') -%}
+	{% if type == 'toggle' || type == 'checkbox' -%}
+		<input type="checkbox"{{ type == 'toggle' ? ' class="toggle"' }} name="{{ name }}" value="1"{{ checked ? ' checked' }}>
+	{%- elseif type == 'radio' -%}
+		<label><input type="radio" class="radio" name="{{ name }}" value="1"{{ checked ? ' checked' }}> {{ lang('YES') }}</label>
+		<label><input type="radio" class="radio" name="{{ name }}" value="0"{{ !checked ? ' checked' }}> {{ lang('NO') }}</label>
+	{%- endif %}
+{%- endmacro %}
+
+{% macro confirmbox(name, message, default = false) -%}
+	<div id="{{ name }}_confirmbox" data-default="{{ default ? 1 : 0 }}" style="display: none;">
+		<h2>{{ lang('CONFIRM') }}</h2>
+		<p>{{ message }}</p>
+		<p>
+			<input type="button" class="button1" name="{{ name }}_confirm_yes" value="{{ lang('YES') }}">&nbsp;
+			<input type="button" class="button2" name="{{ name }}_confirm_no" value="{{ lang('NO') }}">
+		</p>
+	</div>
+{%- endmacro %}
