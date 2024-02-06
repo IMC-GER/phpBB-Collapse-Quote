@@ -72,7 +72,7 @@ $lang = array_merge($lang, [
 	'BOTTOM'									=> 'Unten',
 
 	'COLLAPSEQUOTE_OVERWRITE_USERSET'			=> 'Benutzereinstellungen überschreiben',
-	'COLLAPSEQUOTE_OVERWRITE_USERSET_DEC'		=> 'Bei dieser Auswahl werden die Einstellungen aller Benutzer überschrieben. Bei der Auswahl "Aus" werden nur Standartwerte für neue Benutzer und Gäste gesetzt.',
+	'COLLAPSEQUOTE_OVERWRITE_USERSET_DEC'		=> 'Bei dieser Auswahl werden die Einstellungen aller Benutzer überschrieben. Ohne diese Auswahl werden nur die Standartwerte für neue Benutzer und Gäste gesetzt.',
 
 	// General settings
 	'COLLAPSEQUOTE_SETTINGS_STYLE'				=> 'Einstellungen',
