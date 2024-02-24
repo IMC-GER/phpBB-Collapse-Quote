@@ -150,6 +150,7 @@ class imcgerQuoteBox {
 			quoteButton.style.padding = imcgerQuoteBox.styleData.paddingBottom + 'px';
 			quoteButton.innerHTML	  = imcgerQuoteBox.property.buttonDown;
 			quoteButton.style.display = 'block';
+			quoteButton.classList.add('imcger-visible');
 
 			// Collapse quote box.
 			quoteTextBox.style.height = imcgerQuoteBox.styleData.maxQuoteHeigth + 'px';
@@ -167,7 +168,7 @@ class imcgerQuoteBox {
 		});
 
 		// Toggle quotebox
-		quoteElement.getElementsByClassName('imcger-quote-togglebutton')[0].addEventListener('click', function (e) {
+		quoteElement.querySelectorAll('.imcger-quote-togglebutton.imcger-visible')[0].addEventListener('click', function (e) {
 			let quoteButton	 = e.target,
 				quoteBox	 = quoteButton.previousSibling,
 				quoteBoxRect = quoteBox.getBoundingClientRect(),
