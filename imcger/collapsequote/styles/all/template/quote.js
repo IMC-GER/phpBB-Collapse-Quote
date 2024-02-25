@@ -150,7 +150,7 @@ class imcgerQuoteBox {
 			quoteButton.style.padding = imcgerQuoteBox.styleData.paddingBottom + 'px';
 			quoteButton.innerHTML	  = imcgerQuoteBox.property.buttonDown;
 			quoteButton.style.display = 'block';
-			quoteButton.classList.add('imcger-visible');
+			quoteButton.classList.add('imcger-quote-visible');
 
 			// Collapse quote box.
 			quoteTextBox.style.height = imcgerQuoteBox.styleData.maxQuoteHeigth + 'px';
@@ -168,32 +168,34 @@ class imcgerQuoteBox {
 		});
 
 		// Toggle quotebox
-		quoteElement.querySelectorAll('.imcger-quote-togglebutton.imcger-visible')[0].addEventListener('click', function (e) {
-			let quoteButton	 = e.target,
-				quoteBox	 = quoteButton.previousSibling,
-				quoteBoxRect = quoteBox.getBoundingClientRect(),
-				quoteTextBox = quoteBox.firstChild,
-				quoteShadow	 = quoteBox.lastChild;
+		if (typeof quoteElement.getElementsByClassName('imcger-quote-visible')[0] != 'undefined') {
+			quoteElement.getElementsByClassName('imcger-quote-visible')[0].addEventListener('click', function (e) {
+				let quoteButton	 = e.target,
+					quoteBox	 = quoteButton.previousSibling,
+					quoteBoxRect = quoteBox.getBoundingClientRect(),
+					quoteTextBox = quoteBox.firstChild,
+					quoteShadow	 = quoteBox.lastChild;
 
-			// Collapse the quotebox
-			if (quoteShadow.style.display == 'none') {
-				quoteBox.style.height	  = imcgerQuoteBox.styleData.maxQuoteHeigth + 'px';
-				quoteShadow.style.display = 'block';
-				quoteButton.innerHTML	  = imcgerQuoteBox.property.buttonDown;
+				// Collapse the quotebox
+				if (quoteShadow.style.display == 'none') {
+					quoteBox.style.height	  = imcgerQuoteBox.styleData.maxQuoteHeigth + 'px';
+					quoteShadow.style.display = 'block';
+					quoteButton.innerHTML	  = imcgerQuoteBox.property.buttonDown;
 
-				// If the upper part of the quote box is outside the viewport scroll it to position 0
-				if (quoteBoxRect.top < 0) {
-					document.getElementsByTagName('html')[0].style.scrollBehavior = 'smooth';
-					window.scrollBy(0, quoteBoxRect.top - (imcgerQuoteBox.styleData.lineHeight + (2 * imcgerQuoteBox.styleData.paddingTop)));
+					// If the upper part of the quote box is outside the viewport scroll it to position 0
+					if (quoteBoxRect.top < 0) {
+						document.getElementsByTagName('html')[0].style.scrollBehavior = 'smooth';
+						window.scrollBy(0, quoteBoxRect.top - (imcgerQuoteBox.styleData.lineHeight + (2 * imcgerQuoteBox.styleData.paddingTop)));
+					}
 				}
-			}
-			// Expand the quotebox
-			else {
-				quoteBox.style.height = quoteTextBox.offsetHeight + 'px'; // This way is importent for the animation (CSS transition)
-				setTimeout(function() { quoteShadow.style.display = 'none'; }, 500);
-				quoteButton.innerHTML = imcgerQuoteBox.property.buttonUp;
-			}
-		});
+				// Expand the quotebox
+				else {
+					quoteBox.style.height = quoteTextBox.offsetHeight + 'px'; // This way is importent for the animation (CSS transition)
+					setTimeout(function() { quoteShadow.style.display = 'none'; }, 500);
+					quoteButton.innerHTML = imcgerQuoteBox.property.buttonUp;
+				}
+			});
+		}
 	}
 }
 
