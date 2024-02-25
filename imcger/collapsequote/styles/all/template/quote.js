@@ -114,13 +114,15 @@ class imcgerQuoteBox {
 
 	// Initialize the form
 	constructor(quoteElement) {
-		let quoteTextBox	= quoteElement.getElementsByClassName('imcger-quote-text')[0];
+		let quoteTextBox = quoteElement.getElementsByClassName('imcger-quote-text')[0],
+			quoteButton	 = 'undefined';
 
 		// If Quotebox is too big reduce the size of the box and show shadow and button.
 		if (parseInt(quoteTextBox.offsetHeight) > imcgerQuoteBox.styleData.maxQuoteHeigth) {
 			let quoteText	= quoteTextBox.firstChild,
-				quoteShadow = quoteTextBox.lastChild,
-				quoteButton = quoteTextBox.nextSibling;
+				quoteShadow = quoteTextBox.lastChild;
+
+			quoteButton = quoteTextBox.nextSibling;
 
 			if (imcgerQuoteBox.property.textTop) {
 				// Add properties to the shadow on the bottom of quotebox
@@ -150,7 +152,6 @@ class imcgerQuoteBox {
 			quoteButton.style.padding = imcgerQuoteBox.styleData.paddingBottom + 'px';
 			quoteButton.innerHTML	  = imcgerQuoteBox.property.buttonDown;
 			quoteButton.style.display = 'block';
-			quoteButton.classList.add('imcger-quote-visible');
 
 			// Collapse quote box.
 			quoteTextBox.style.height = imcgerQuoteBox.styleData.maxQuoteHeigth + 'px';
@@ -168,8 +169,8 @@ class imcgerQuoteBox {
 		});
 
 		// Toggle quotebox
-		if (typeof quoteElement.getElementsByClassName('imcger-quote-visible')[0] != 'undefined') {
-			quoteElement.getElementsByClassName('imcger-quote-visible')[0].addEventListener('click', function (e) {
+		if (quoteButton != 'undefined') {
+			quoteButton.addEventListener('click', function (e) {
 				let quoteButton	 = e.target,
 					quoteBox	 = quoteButton.previousSibling,
 					quoteBoxRect = quoteBox.getBoundingClientRect(),
