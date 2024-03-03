@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "If quotes are very long, the box is displayed in a smaller size. A mouse click displays the entire quote.",
 	"homepage": "https://github.com/IMC-GER/phpBB-Collapse-Quote",
-	"version": "1.3.2-b2",
-	"time": "2024-02-25",
+	"version": "1.3.2",
+	"time": "2024-03-03",
 	"license": "GPL-2.0-only",
 	"authors": [
 		{

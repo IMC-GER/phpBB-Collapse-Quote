@@ -38,6 +38,9 @@ If quotes are very long, the box is displayed in a smaller size. A mouse click d
 
 ## Changelog
 
+### v1.3.2 (03-03-2024) 
+- Fixed JS error when element undefined
+
 ### v1.3.1 (21-02-2024) 
 - Fixed don't toggle quotebox with nested quoteboxes
 

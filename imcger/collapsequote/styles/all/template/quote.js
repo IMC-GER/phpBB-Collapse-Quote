@@ -169,7 +169,7 @@ class imcgerQuoteBox {
 		});
 
 		// Toggle quotebox
-		if (quoteButton != 'undefined') {
+		if (typeof quoteButton == 'object') {
 			quoteButton.addEventListener('click', function (e) {
 				let quoteButton	 = e.target,
 					quoteBox	 = quoteButton.previousSibling,
