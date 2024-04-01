@@ -139,11 +139,8 @@ class admin_controller
 	 */
 	protected function set_vars_config()
 	{
-		/* Show minium 4 lines in the Quotebox */
-		$visible_lines = $this->request->variable('imcger_collapsequote_visible_lines', 4) < 4 ? 4 : $this->request->variable('imcger_collapsequote_visible_lines', 4);
-
 		$this->config->set('imcger_collapsequote_aktive', $this->request->variable('imcger_collapsequote_aktive', 0));
-		$this->config->set('imcger_collapsequote_visible_lines', $visible_lines);
+		$this->config->set('imcger_collapsequote_visible_lines', $this->request->variable('imcger_collapsequote_visible_lines', 4));
 		$this->config->set('imcger_collapsequote_text_top', $this->request->variable('imcger_collapsequote_text_top', 0));
 		$this->config->set('imcger_collapsequote_button_bg', $this->request->variable('imcger_collapsequote_button_bg', ''));
 		$this->config->set('imcger_collapsequote_button_fg', $this->request->variable('imcger_collapsequote_button_fg', ''));
