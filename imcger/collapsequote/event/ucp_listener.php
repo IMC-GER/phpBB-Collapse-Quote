@@ -16,7 +16,7 @@ namespace imcger\collapsequote\event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Collapsequote listener
+ * Collapse Quote listener
  */
 class ucp_listener implements EventSubscriberInterface
 {
@@ -148,16 +148,19 @@ class ucp_listener implements EventSubscriberInterface
 	 */
 	public function ucp_register_set_data($event)
 	{
-		$sql_ary = [
-			'user_collapsequote_aktive'		=> $this->config['imcger_collapsequote_aktive'],
-			'user_collapsequote_text_top'	=> $this->config['imcger_collapsequote_text_top'],
-			'user_collapsequote_lines'		=> $this->config['imcger_collapsequote_visible_lines'],
-		];
+		// Read guest account settings as default
+		$sql = 'SELECT user_collapsequote_aktive, user_collapsequote_text_top, user_collapsequote_lines
+				FROM ' . USERS_TABLE . '
+				WHERE user_id = ' . ANONYMOUS;
+
+		$result	= $this->db->sql_query_limit($sql, 1);
+		$user_data = $this->db->sql_fetchrow($result);
+		$this->db->sql_freeresult($result);
 
 		// Set user data whith default
-		$sql =	'UPDATE ' . USERS_TABLE .
-				' SET ' . $this->db->sql_build_array('UPDATE', $sql_ary) .
-				' WHERE user_id = ' . (int) $event['user_id'];
+		$sql = 'UPDATE ' . USERS_TABLE . '
+				SET ' . $this->db->sql_build_array('UPDATE', $user_data) . '
+				WHERE user_id = ' . (int) $event['user_id'];
 
 		$this->db->sql_query($sql);
 	}

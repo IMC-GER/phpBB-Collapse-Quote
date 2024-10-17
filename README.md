@@ -38,6 +38,15 @@ If quotes are very long, the box is displayed in a smaller size. A mouse click d
 
 ## Changelog
 
+### v1.4.0 (17-10-2024) 
+- Fixed Don't set default data for guest when board email ist deactive
+- Changed Minimum number of visible lines
+- Changed Change code in UCP template to Twig
+- Changed The texts of the language files have been adapted
+- Removed Redundant columen with user data in db config table
+- Added LukeWCSphpBBConfirmBox v1.4.3
+- Added Twig macro for colpick input field
+
 ### v1.3.2 (03-03-2024) 
 - Fixed JS error when element undefined
 

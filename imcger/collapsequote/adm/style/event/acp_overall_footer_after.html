@@ -1,29 +1,35 @@
-	{% if not definition.INCLUDED_COLPICKJS %}
-		{% INCLUDEJS '@imcger_collapsequote/colpick/colpick.js' %}
-		{% INCLUDECSS '@imcger_collapsequote/colpick/colpick.css' %}
-		{% DEFINE INCLUDED_COLPICKJS = true %}
-	{% endif %}
+{#
+ * Collapse Quote
+ * An extension for the phpBB Forum Software package.
+ *
+ * @copyright (c) 2022, Thorsten Ahlers
+ * @license GNU General Public License, version 2 (GPL-2.0)
+ *
+ #}
+
+{% if not definition.INCLUDED_COLPICKJS %}
+	{% INCLUDEJS '@imcger_collapsequote/colpick/colpick.js' %}
+	{% INCLUDECSS '@imcger_collapsequote/colpick/colpick.css' %}
+	{% DEFINE INCLUDED_COLPICKJS = true %}
+{% endif %}
 
 <script>
 	/**
 	 * Function borrowed from Board Announcements extension for phpBB
 	 *
 	 * @copyright (c) 2014 phpBB Limited <https://www.phpbb.com>
-	 * @license GNU General Public License, version 2 (GPL-2.0)		
+	 * @license GNU General Public License, version 2 (GPL-2.0)
 	 */
 	jQuery(function($) {
-		var bgColor		 = '{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG|raw }}';
-		var fgColor		 = '{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG|raw }}';
-		var bgColorHover = '{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER|raw }}';
-		var fgColorHover = '{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER|raw }}';
 
 		$('#imcger_collapsequote_button_bg').colpick({
 			layout: 'hex',
 			submit: 0,
 			onBeforeShow: function() {
-				if (bgColor !== '') {
-					$(this).colpickSetColor(bgColor);
-					bgColor = '';
+				let colour = '{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG|raw }}';
+				if (colour !== '') {
+					$(this).colpickSetColor(colour);
+					colour = '';
 				}
 			},
 			onChange: function(hsb, hex, rgb, el, bySetColor) {
@@ -44,9 +50,10 @@
 			layout: 'hex',
 			submit: 0,
 			onBeforeShow: function() {
-				if (fgColor !== '') {
-					$(this).colpickSetColor(fgColor);
-					fgColor = '';
+				let colour = '{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG|raw }}';
+				if (colour !== '') {
+					$(this).colpickSetColor(colour);
+					colour = '';
 				}
 			},
 			onChange: function(hsb, hex, rgb, el, bySetColor) {
@@ -67,9 +74,10 @@
 			layout: 'hex',
 			submit: 0,
 			onBeforeShow: function() {
-				if (bgColorHover !== '') {
-					$(this).colpickSetColor(bgColorHover);
-					bgColorHover = '';
+				let colour = '{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER|raw }}';
+				if (colour !== '') {
+					$(this).colpickSetColor(colour);
+					colour = '';
 				}
 			},
 			onChange: function(hsb, hex, rgb, el, bySetColor) {
@@ -90,9 +98,10 @@
 			layout: 'hex',
 			submit: 0,
 			onBeforeShow: function() {
-				if (fgColorHover !== '') {
-					$(this).colpickSetColor(fgColorHover);
-					fgColorHover = '';
+				let colour = '{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER|raw }}';
+				if (colour !== '') {
+					$(this).colpickSetColor(colour);
+					colour = '';
 				}
 			},
 			onChange: function(hsb, hex, rgb, el, bySetColor) {

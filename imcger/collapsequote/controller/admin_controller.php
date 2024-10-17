@@ -111,6 +111,15 @@ class admin_controller
 	 */
 	protected function set_template_vars()
 	{
+		// Read guest account settings as default
+		$sql = 'SELECT user_collapsequote_aktive, user_collapsequote_text_top, user_collapsequote_lines
+				FROM ' . USERS_TABLE . '
+				WHERE user_id = ' . ANONYMOUS;
+
+		$result	= $this->db->sql_query_limit($sql, 1);
+		$user_data = $this->db->sql_fetchrow($result);
+		$this->db->sql_freeresult($result);
+
 		$metadata_manager = $this->ext_manager->create_extension_metadata_manager('imcger/collapsequote');
 
 		$this->template->assign_vars([
@@ -118,9 +127,9 @@ class admin_controller
 			'IMCGER_COLLAPSEQUOTE_TITLE'	=> $metadata_manager->get_metadata('display-name'),
 			'IMCGER_COLLAPSEQUOTE_EXT_VER'	=> $metadata_manager->get_metadata('version'),
 
-			'IMCGER_COLLAPSEQUOTE_AKTIVE'			=> $this->config['imcger_collapsequote_aktive'],
-			'IMCGER_COLLAPSEQUOTE_VISIBLE_LINES'	=> $this->config['imcger_collapsequote_visible_lines'],
-			'IMCGER_COLLAPSEQUOTE_TEXT_TOP'			=> $this->config['imcger_collapsequote_text_top'],
+			'IMCGER_COLLAPSEQUOTE_AKTIVE'			=> $user_data['user_collapsequote_aktive'],
+			'IMCGER_COLLAPSEQUOTE_VISIBLE_LINES'	=> $user_data['user_collapsequote_lines'],
+			'IMCGER_COLLAPSEQUOTE_TEXT_TOP'			=> $user_data['user_collapsequote_text_top'],
 			'S_IMCGER_OVERWRITE_USERSET'			=> false,
 
 			'IMCGER_COLLAPSEQUOTE_BUTTON_BG'		=> $this->config['imcger_collapsequote_button_bg'],
@@ -139,9 +148,6 @@ class admin_controller
 	 */
 	protected function set_vars_config()
 	{
-		$this->config->set('imcger_collapsequote_aktive', $this->request->variable('imcger_collapsequote_aktive', 0));
-		$this->config->set('imcger_collapsequote_visible_lines', $this->request->variable('imcger_collapsequote_visible_lines', 4));
-		$this->config->set('imcger_collapsequote_text_top', $this->request->variable('imcger_collapsequote_text_top', 0));
 		$this->config->set('imcger_collapsequote_button_bg', $this->request->variable('imcger_collapsequote_button_bg', ''));
 		$this->config->set('imcger_collapsequote_button_fg', $this->request->variable('imcger_collapsequote_button_fg', ''));
 		$this->config->set('imcger_collapsequote_button_bg_hover', $this->request->variable('imcger_collapsequote_button_bg_hover', ''));
@@ -151,22 +157,24 @@ class admin_controller
 	/**
 	 * Overwrite settings for all user
 	 *
+	 * @param  bool		$all_user	Store data to all user
+	 *
 	 * @return null
 	 * @access protected
 	 */
 	protected function set_vars_userset($all_user)
 	{
 		$sql_ary = [
-			'user_collapsequote_aktive'		=> $this->config['imcger_collapsequote_aktive'],
-			'user_collapsequote_lines'		=> $this->config['imcger_collapsequote_visible_lines'],
-			'user_collapsequote_text_top'	=> $this->config['imcger_collapsequote_text_top'],
+			'user_collapsequote_aktive'		=> $this->request->variable('imcger_collapsequote_aktive', 0),
+			'user_collapsequote_lines'		=> $this->request->variable('imcger_collapsequote_visible_lines', 4),
+			'user_collapsequote_text_top'	=> $this->request->variable('imcger_collapsequote_text_top', 0),
 		];
 
 		$sql_where = $all_user ? '' : ' WHERE user_id = ' . ANONYMOUS;
 
 		// Upate user settings whith default data
-		$sql =	'UPDATE ' . USERS_TABLE .
-				' SET ' . $this->db->sql_build_array('UPDATE', $sql_ary) . $sql_where;
+		$sql = 'UPDATE ' . USERS_TABLE . '
+				SET ' . $this->db->sql_build_array('UPDATE', $sql_ary) . $sql_where;
 
 		$this->db->sql_query($sql);
 	}

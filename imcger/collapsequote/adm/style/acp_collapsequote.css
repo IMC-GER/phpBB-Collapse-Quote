@@ -1,6 +1,11 @@
-/*
- Collapse Quote
-------------------------------------- */
+/**
+ * Collapse Quote
+ * An extension for the phpBB Forum Software package.
+ *
+ * @copyright (c) 2022, Thorsten Ahlers
+ * @license GNU General Public License, version 2 (GPL-2.0)
+ *
+ */
 
 /* ACP ConfirmBox (JS) */
 div[id$="_confirmbox"] {

@@ -36,7 +36,7 @@ class update_v120 extends \phpbb\db\migration\migration
 
 		return [
 			'add_columns' => [
-				$this->table_prefix . 'users' => [
+				USERS_TABLE => [
 					'user_collapsequote_aktive'	  => ['BOOL', 1],
 					'user_collapsequote_lines'	  => ['UINT:4', $visible_lines],
 					'user_collapsequote_text_top' => ['BOOL', 1],
@@ -49,7 +49,7 @@ class update_v120 extends \phpbb\db\migration\migration
 	{
 		return [
 			'drop_columns' => [
-				$this->table_prefix . 'users' => [
+				USERS_TABLE => [
 					'user_collapsequote_aktive',
 					'user_collapsequote_lines',
 					'user_collapsequote_text_top',

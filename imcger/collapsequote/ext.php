@@ -19,13 +19,13 @@ class ext extends \phpbb\extension\base
 	protected $ext_name = 'collapsequote';
 
 	/** @var min phpBB version */
-	protected $phpbb_min_version = '3.2.0';
+	protected $phpbb_min_version = '3.3.0';
 
 	/** @var max phpBB version (>= query) */
 	protected $phpbb_max_version = '4.0.0';
 
 	/** @var min PHP version */
-	protected $php_min_version = '7.0.0';
+	protected $php_min_version = '7.2.0';
 
 	/** @var max PHP version (>= query) */
 	protected $php_max_version = '8.4.0';
