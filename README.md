@@ -13,13 +13,14 @@ If quotes are very long, the box is displayed in a smaller size. A mouse click d
   - Collapse Quote enable/disable.
   - Number of visible lines.
   - Text alignment in quotebox.
-- Button colours.
+- expand/collapse button colours.
+- Settings from the UCP are available in the user administration
 
 ## Screenshots
 - [ACP](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/collapsequote/en/screenshot_collapse_quote_acp.png)
 - [UCP](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/collapsequote/en/screenshot_collapse_quote_ucp.png)
 - [Post Quote is collapse](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/collapsequote/en/screenshot_collapse_quote_collaps.png)
-- [Post Quote is expande](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/collapsequote/en/screenshot_collapse_quote_expand.png)
+- [Post Quote is expand](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/collapsequote/en/screenshot_collapse_quote_expand.png)
 
 ## Requirements
 - php 7.0 or higher
@@ -43,9 +44,11 @@ If quotes are very long, the box is displayed in a smaller size. A mouse click d
 - Changed Minimum number of visible lines
 - Changed Change code in UCP template to Twig
 - Changed The texts of the language files have been adapted
+- Changed Requirements phpBB min. 3.3.0 and php max. 8.3
 - Removed Redundant columen with user data in db config table
 - Added LukeWCSphpBBConfirmBox v1.4.3
 - Added Twig macro for colpick input field
+- Added User settings to ACP user administration
 
 ### v1.3.2 (03-03-2024) 
 - Fixed JS error when element undefined

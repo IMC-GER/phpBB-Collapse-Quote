@@ -42,9 +42,9 @@
 {%- endmacro %}
 
 {% macro colourpick(name, value) -%}
-	<input type="text" id="{{ name }}" name="{{ name }}" value="{{ value }}" size="6" placeholder="RRGGBB" pattern="{{ '^[a-fA-F0-9]\{6\}$' }}"{{
-		(value ? ' style="text-align: center;border-right:20px solid #' ~ value ~ '"')
-	}}>
+	<input type="text" id="{{ name }}" name="{{ name }}" value="{{ value }}" size="6"
+		placeholder="RRGGBB" pattern="{{ '^[a-fA-F0-9]\{6\}$' }}"
+		style="text-align: center;{{ (value ? ' border-right:20px solid #' ~ value) }}">
 {%- endmacro %}
 
 {% macro confirmbox(name, message, default = false) -%}

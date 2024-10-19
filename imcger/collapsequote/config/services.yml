@@ -20,6 +20,15 @@ services:
         tags:
             - { name: event.listener }
 
+    imcger.collapsequote.acp:
+        class: 'imcger\collapsequote\event\acp_listener'
+        arguments:
+            - '@template'
+            - '@language'
+            - '@request'
+        tags:
+            - { name: event.listener }
+
     imcger.collapsequote.ucp:
         class: 'imcger\collapsequote\event\ucp_listener'
         arguments:
