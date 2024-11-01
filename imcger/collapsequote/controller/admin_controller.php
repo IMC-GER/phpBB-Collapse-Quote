@@ -104,8 +104,6 @@ class admin_controller
 	/**
 	 * Set template variables
 	 *
-	 * @param  string	$get_data			Data to set in template
-	 * @param  bool		$overwrite_userset	Display message box
 	 * @return null
 	 * @access protected
 	 */

@@ -29,9 +29,6 @@ class acp_listener implements EventSubscriberInterface
 	/** @var \phpbb\request\request */
 	protected $request;
 
-	/** @var bool form is submit */
-	protected $submit;
-
 	/**
 	 * Constructor
 	 *
@@ -51,7 +48,6 @@ class acp_listener implements EventSubscriberInterface
 		$this->template = $template;
 		$this->language = $language;
 		$this->request	= $request;
-		$this->submit	= false;
 	}
 
 	/**

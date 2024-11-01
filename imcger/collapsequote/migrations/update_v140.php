@@ -30,4 +30,13 @@ class update_v140 extends \phpbb\db\migration\migration
 			['config.remove', ['imcger_collapsequote_visible_lines']],
 		];
 	}
+
+	public function revert_data()
+	{
+		return [
+			['config.add', ['imcger_collapsequote_aktive', 1]],
+			['config.add', ['imcger_collapsequote_text_top', 1]],
+			['config.add', ['imcger_collapsequote_visible_lines', 4]],
+		];
+	}
 }
