@@ -7,7 +7,7 @@
  #
  #}
 
-{% if IMCGER_COLLAPSEQUOTE_ACTIVE %}
+{% if COLLAPSEQUOTE_ACTIVE %}
 {% INCLUDECSS "@imcger_collapsequote/quote.css" %}
 {% INCLUDEJS "@imcger_collapsequote/quote.js" %}
 <script>
@@ -27,18 +27,18 @@
 		buttonDown: '{{ lang("COLLAPSEQUOTE_MORE")|e("js") }}',
 
 		// Max height when quotebox collapse
-		visibleLines: {{ IMCGER_COLLAPSEQUOTE_VISIBLE_LINES|raw }},
+		visibleLines: {{ COLLAPSEQUOTE_VISIBLE_LINES|raw }},
 
 		// Display first or last lines if quotebox collapse
-		textTop: {{ IMCGER_COLLAPSEQUOTE_TEXT_TOP|raw }},
+		textTop: {{ COLLAPSEQUOTE_TEXT_TOP|raw }},
 
 		// Toggelbutton colors
-		buttonFG: '{% if IMCGER_COLLAPSEQUOTE_BUTTON_FG|length > 3 %}#{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG|raw }}{% endif %}',
-		buttonBG: '{% if IMCGER_COLLAPSEQUOTE_BUTTON_BG|length > 3 %}#{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG|raw }}{% endif %}',
+		buttonFG: '{% if COLLAPSEQUOTE_BUTTON_FG|length > 3 %}#{{ COLLAPSEQUOTE_BUTTON_FG|raw }}{% endif %}',
+		buttonBG: '{% if COLLAPSEQUOTE_BUTTON_BG|length > 3 %}#{{ COLLAPSEQUOTE_BUTTON_BG|raw }}{% endif %}',
 
 		// Toggelbutton colors for hover effect
-		buttonHoverFG: '{% if IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER|length > 3 %}#{{ IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER|raw }}{% endif %}',
-		buttonHoverBG: '{% if IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER|length > 3 %}#{{ IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER|raw }}{% endif %}',
+		buttonHoverFG: '{% if COLLAPSEQUOTE_BUTTON_FG_HOVER|length > 3 %}#{{ COLLAPSEQUOTE_BUTTON_FG_HOVER|raw }}{% endif %}',
+		buttonHoverBG: '{% if COLLAPSEQUOTE_BUTTON_BG_HOVER|length > 3 %}#{{ COLLAPSEQUOTE_BUTTON_BG_HOVER|raw }}{% endif %}',
 	};
 </script>
 {% endif %}

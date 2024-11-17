@@ -76,9 +76,6 @@ class admin_controller
 	 */
 	public function display_options()
 	{
-		// Add ACP lang file
-		$this->language->add_lang('common', 'imcger/collapsequote');
-
 		add_form_key('imcger/collapsequote');
 
 		// Is the form being submitted to us?
@@ -121,19 +118,19 @@ class admin_controller
 		$metadata_manager = $this->ext_manager->create_extension_metadata_manager('imcger/collapsequote');
 
 		$this->template->assign_vars([
-			'U_ACTION'						=> $this->u_action,
-			'IMCGER_COLLAPSEQUOTE_TITLE'	=> $metadata_manager->get_metadata('display-name'),
-			'IMCGER_COLLAPSEQUOTE_EXT_VER'	=> $metadata_manager->get_metadata('version'),
+			'U_ACTION'				=> $this->u_action,
+			'COLLAPSEQUOTE_TITLE'	=> $metadata_manager->get_metadata('display-name'),
+			'COLLAPSEQUOTE_EXT_VER'	=> $metadata_manager->get_metadata('version'),
 
-			'IMCGER_COLLAPSEQUOTE_AKTIVE'			=> $user_data['user_collapsequote_aktive'],
-			'IMCGER_COLLAPSEQUOTE_VISIBLE_LINES'	=> $user_data['user_collapsequote_lines'],
-			'IMCGER_COLLAPSEQUOTE_TEXT_TOP'			=> $user_data['user_collapsequote_text_top'],
-			'S_IMCGER_OVERWRITE_USERSET'			=> false,
+			'UCP_COLLAPSEQUOTE_AKTIVE'			=> $user_data['user_collapsequote_aktive'],
+			'UCP_COLLAPSEQUOTE_LINES'			=> $user_data['user_collapsequote_lines'],
+			'UCP_COLLAPSEQUOTE_TEXT_TOP'		=> $user_data['user_collapsequote_text_top'],
+			'S_COLLAPSEQUOTE_OVERWRITE_USERSET'	=> false,
 
-			'IMCGER_COLLAPSEQUOTE_BUTTON_BG'		=> $this->config['imcger_collapsequote_button_bg'],
-			'IMCGER_COLLAPSEQUOTE_BUTTON_FG'		=> $this->config['imcger_collapsequote_button_fg'],
-			'IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER'	=> $this->config['imcger_collapsequote_button_bg_hover'],
-			'IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER'	=> $this->config['imcger_collapsequote_button_fg_hover'],
+			'COLLAPSEQUOTE_BUTTON_BG'			=> $this->config['imcger_collapsequote_button_bg'],
+			'COLLAPSEQUOTE_BUTTON_FG'			=> $this->config['imcger_collapsequote_button_fg'],
+			'COLLAPSEQUOTE_BUTTON_BG_HOVER'		=> $this->config['imcger_collapsequote_button_bg_hover'],
+			'COLLAPSEQUOTE_BUTTON_FG_HOVER'		=> $this->config['imcger_collapsequote_button_fg_hover'],
 		]);
 
 	}
@@ -163,9 +160,9 @@ class admin_controller
 	protected function set_vars_userset($all_user)
 	{
 		$sql_ary = [
-			'user_collapsequote_aktive'		=> $this->request->variable('imcger_collapsequote_aktive', 0),
-			'user_collapsequote_lines'		=> $this->request->variable('imcger_collapsequote_visible_lines', 4),
-			'user_collapsequote_text_top'	=> $this->request->variable('imcger_collapsequote_text_top', 0),
+			'user_collapsequote_aktive'		=> $this->request->variable('user_collapsequote_aktive', 1),
+			'user_collapsequote_lines'		=> $this->request->variable('user_collapsequote_lines', 4),
+			'user_collapsequote_text_top'	=> $this->request->variable('user_collapsequote_text_top', 1),
 		];
 
 		$sql_where = $all_user ? '' : ' WHERE user_id = ' . ANONYMOUS;

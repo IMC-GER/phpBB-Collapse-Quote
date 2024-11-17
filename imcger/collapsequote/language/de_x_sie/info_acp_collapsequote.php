@@ -38,9 +38,55 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, [
+	// Module
 	'ACP_COLLAPSEQUOTE_TITLE'			=> 'Collapse Quote',
 	'ACP_COLLAPSEQUOTE_SETTINGS'		=> 'Einstellungen',
 	'ACP_COLLAPSEQUOTE_SETTING_SAVED'	=> 'Collapse Quote Einstellungen erfolgreich gespeichert.',
+
+	// Language pack author
+	'COLLAPSEQUOTE_LANG_DESC'				=> 'Deutsch (Sie)',
+	'COLLAPSEQUOTE_LANG_EXT_VER' 			=> '1.4.0',
+	'COLLAPSEQUOTE_LANG_AUTHOR' 			=> 'IMC-Ger',
+
+	// Message text
+	'COLLAPSEQUOTE_SETTING_SAVED'			=> 'Die Einstellungen wurden erfolgreich gespeichert.',
+	'COLLAPSEQUOTE_USER_SETTING_SAVED'		=> 'Die Einstellungen wurden für alle Benutzern erfolgreich gespeichert.',
+	'COLLAPSEQUOTE_DEFAULT_SETTING_SAVED'	=> 'Die Standarteinstellungen für neue Benutzer und Gäste wurden erfolgreich gespeichert.',
+
+	// Confirm Box
+	'COLLAPSEQUOTE_USER_SET_CONFIRM'		=> 'Diese Einstellung überschreibt alle Benutzereinstellungen mit ihren Standardwerten.<br><strong>Dieser Vorgang kann nicht rückgängig gemacht werden!</strong>',
+
+	// Extension description
+	'COLLAPSEQUOTE_TITLE'					=> 'Collapse Quote',
+	'COLLAPSEQUOTE_TITLE_EXPLAIN'			=> 'Hier können die Größe des Zitatfeldes und die Farben des Buttons, der zur Größenänderung der Zitate dient, eingestellt werden.',
+
+	// User settings
+	'COLLAPSEQUOTE_SETTINGS_USER'			=> 'Einstellungen für Gäste und neue Benutzer',
+
+	'COLLAPSEQUOTE_ACTIVE'					=> 'Zitate minimieren',
+	'COLLAPSEQUOTE_ACTIVE_DESC'				=> 'Die Zitate werden auf die Anzahl der sichtbaren Zeilen minimiert und können mit einem Mausklick vollständig angezeigt werden.',
+
+	'COLLAPSEQUOTE_VISIBLE_LINES'			=> 'Sichtbare Textzeilen',
+	'COLLAPSEQUOTE_VISIBLE_LINES_DESC'		=> 'Anzahl der sichtbaren Textzeilen der Zitate im minimierten Zustand.',
+
+	'COLLAPSEQUOTE_TEXT_TOP'				=> 'Textausrichtung',
+	'COLLAPSEQUOTE_TEXT_TOP_DESC'			=> 'Bei Aktivierung werden im minimierten Zustand die ersten Zeilen angezeigt. Bei Deaktivierung die letzten Zeilen.',
+
+	'COLLAPSEQUOTE_OVERWRITE_USERSET'		=> 'Benutzereinstellungen überschreiben',
+	'COLLAPSEQUOTE_OVERWRITE_USERSET_DEC'	=> 'Bei dieser Auswahl werden die Einstellungen aller Benutzer überschrieben. Ohne diese Auswahl werden nur die Standartwerte für neue Benutzer und Gäste gesetzt.',
+
+	// General settings
+	'COLLAPSEQUOTE_SETTINGS_STYLE'				=> 'Einstellungen',
+
+	'COLLAPSEQUOTE_BUTTON_FG_COLOR'				=> 'Button Vordergrundfarbe',
+	'COLLAPSEQUOTE_BUTTON_FG_COLOR_DESC'		=> 'Auswahl der Schriftfarbe des Button zum Max-/Minimieren der Zitatfelder. Bei leerem Feld wird die Systemfarbe verwendet.',
+	'COLLAPSEQUOTE_BUTTON_BG_COLOR'				=> 'Button Hintergrundfarbe',
+	'COLLAPSEQUOTE_BUTTON_BG_COLOR_DESC'		=> 'Auswahl der Button Grundfarbe. Bei leerem Feld wird die Systemfarbe verwendet.',
+
+	'COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER'		=> 'Button Vordergrundfarbe für den Mouseover-Effekt',
+	'COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER_DESC'	=> 'Auswahl der Schriftfarbe des Button zum Max-/Minimieren der Zitatfelder beim Überfahren mit der Maus. Bei leerem Feld tritt keine Farbänderung ein.',
+	'COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER'		=> 'Button Hintergrundfarbe für den Mouseover-Effekt',
+	'COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER_DESC'	=> 'Auswahl der Button Grundfarbe beim überfahren mit der Maus. Bei leerem Feld tritt keine Farbänderung ein.',
 
 	// Messages requirement check
 	'IMCGER_REQUIRE_PHPBB'   => 'Diese Erweiterung benötigt eine phpBB Version gleich oder grösser %1$s und kleiner %2$s. Deine Version ist %3$s.',

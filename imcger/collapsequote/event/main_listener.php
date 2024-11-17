@@ -87,13 +87,13 @@ class main_listener implements EventSubscriberInterface
 		$this->language->add_lang('collapsequote_lang','imcger/collapsequote');
 
 		$this->template->assign_vars([
-			'IMCGER_COLLAPSEQUOTE_ACTIVE'		   => $this->user->data['user_collapsequote_aktive'],
-			'IMCGER_COLLAPSEQUOTE_VISIBLE_LINES'   => $this->user->data['user_collapsequote_lines'],
-			'IMCGER_COLLAPSEQUOTE_TEXT_TOP'		   => $this->user->data['user_collapsequote_text_top'],
-			'IMCGER_COLLAPSEQUOTE_BUTTON_FG'	   => $this->config['imcger_collapsequote_button_fg'],
-			'IMCGER_COLLAPSEQUOTE_BUTTON_BG'	   => $this->config['imcger_collapsequote_button_bg'],
-			'IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER' => $this->config['imcger_collapsequote_button_fg_hover'],
-			'IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER' => $this->config['imcger_collapsequote_button_bg_hover'],
+			'COLLAPSEQUOTE_ACTIVE'			=> $this->user->data['user_collapsequote_aktive'],
+			'COLLAPSEQUOTE_VISIBLE_LINES'	=> $this->user->data['user_collapsequote_lines'],
+			'COLLAPSEQUOTE_TEXT_TOP'		=> $this->user->data['user_collapsequote_text_top'],
+			'COLLAPSEQUOTE_BUTTON_FG'		=> $this->config['imcger_collapsequote_button_fg'],
+			'COLLAPSEQUOTE_BUTTON_BG'		=> $this->config['imcger_collapsequote_button_bg'],
+			'COLLAPSEQUOTE_BUTTON_FG_HOVER' => $this->config['imcger_collapsequote_button_fg_hover'],
+			'COLLAPSEQUOTE_BUTTON_BG_HOVER' => $this->config['imcger_collapsequote_button_bg_hover'],
 		]);
 	}
 

@@ -23,9 +23,6 @@ class main_module
 	{
 		global $phpbb_container, $language;
 
-		/* Add ACP lang file */
-		$language->add_lang('common', 'imcger/collapsequote');
-
 		/* Get an instance of the admin controller */
 		$admin_controller = $phpbb_container->get('imcger.collapsequote.admin.controller');
 

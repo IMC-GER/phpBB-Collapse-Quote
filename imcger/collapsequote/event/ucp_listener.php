@@ -95,7 +95,7 @@ class ucp_listener implements EventSubscriberInterface
 	public function ucp_display_module_before()
 	{
 		// Add language file in UCP
-		$this->language->add_lang('common', 'imcger/collapsequote');
+		$this->language->add_lang('info_acp_collapsequote', 'imcger/collapsequote');
 	}
 
 	/**
@@ -116,6 +116,7 @@ class ucp_listener implements EventSubscriberInterface
 		if (!$event['submit'])
 		{
 			$this->template->assign_vars([
+				'TOGGLECTRL_CQ'				 => 'radio',
 				'UCP_COLLAPSEQUOTE_AKTIVE'	 => $event['data']['user_collapsequote_aktive'],
 				'UCP_COLLAPSEQUOTE_TEXT_TOP' => $event['data']['user_collapsequote_text_top'],
 				'UCP_COLLAPSEQUOTE_LINES'	 => $event['data']['user_collapsequote_lines'],

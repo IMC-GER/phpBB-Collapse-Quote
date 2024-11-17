@@ -76,9 +76,6 @@ class acp_listener implements EventSubscriberInterface
 	 */
 	public function acp_users_prefs_modify_data($event)
 	{
-		// Add language file in ACP
-		$this->language->add_lang('common', 'imcger/collapsequote');
-
 		$event['user_row'] = array_merge($event['user_row'], [
 			'user_collapsequote_aktive'		=> $this->request->variable('user_collapsequote_aktive', $event['user_row']['user_collapsequote_aktive']),
 			'user_collapsequote_text_top'	=> $this->request->variable('user_collapsequote_text_top', $event['user_row']['user_collapsequote_text_top']),
@@ -112,9 +109,10 @@ class acp_listener implements EventSubscriberInterface
 	public function acp_users_prefs_modify_template_data($event)
 	{
 		$event['user_prefs_data'] = array_merge($event['user_prefs_data'], [
-			'ACP_COLLAPSEQUOTE_AKTIVE'		=> $event['user_row']['user_collapsequote_aktive'],
-			'ACP_COLLAPSEQUOTE_TEXT_TOP'	=> $event['user_row']['user_collapsequote_text_top'],
-			'ACP_COLLAPSEQUOTE_LINES'		=> $event['user_row']['user_collapsequote_lines'],
+			'TOGGLECTRL_CQ'					=> 'radio',
+			'UCP_COLLAPSEQUOTE_AKTIVE'		=> $event['user_row']['user_collapsequote_aktive'],
+			'UCP_COLLAPSEQUOTE_TEXT_TOP'	=> $event['user_row']['user_collapsequote_text_top'],
+			'UCP_COLLAPSEQUOTE_LINES'		=> $event['user_row']['user_collapsequote_lines'],
 		]);
 	}
 }

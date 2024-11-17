@@ -23,29 +23,12 @@
 
 	<fieldset>
 		<legend>{{ lang('COLLAPSEQUOTE_SETTINGS_USER') }}</legend>
-		<dl>
-			<dt><label for="imcger_collapsequote_aktive">{{ lang('COLLAPSEQUOTE_ACTIVE') ~ lang('COLON') }}</label><br><span>{{ lang('COLLAPSEQUOTE_ACTIVE_DESC') }}</span></dt>
-			<dd>
-				{{ common.switch('imcger_collapsequote_aktive', IMCGER_COLLAPSEQUOTE_AKTIVE, switch_type) }}
-			</dd>
-		</dl>
-		<dl>
-			<dt><label for="imcger_collapsequote_visible_lines">{{ lang('COLLAPSEQUOTE_VISIBLE_LINES') }} {{ lang('COLON') }}</label><br><span>{{ lang('COLLAPSEQUOTE_VISIBLE_LINES_DESC') }}</span></dt>
-			<dd>
-				{{ common.number('imcger_collapsequote_visible_lines', IMCGER_COLLAPSEQUOTE_VISIBLE_LINES, 2, 999 ) }}
-			</dd>
-		</dl>
-		<dl>
-			<dt><label for="imcger_collapsequote_text_top">{{ lang('COLLAPSEQUOTE_TEXT_TOP') ~ lang('COLON') }}</label><br><span>{{ lang('COLLAPSEQUOTE_TEXT_TOP_DESC') }}</span></dt>
-			<dd>
-				{{ common.switch('imcger_collapsequote_text_top', IMCGER_COLLAPSEQUOTE_TEXT_TOP, switch_type) }}
-			</dd>
-		</dl>
+		{% include '@imcger_collapsequote/collapsequote_user_settings.html' %}
 		<hr>
 		<dl>
 			<dt><label for="imcger_collapsequote_overwrite_userset">{{ lang('COLLAPSEQUOTE_OVERWRITE_USERSET') ~ lang('COLON') }}</label><br><span>{{ lang('COLLAPSEQUOTE_OVERWRITE_USERSET_DEC') }}</span></dt>
 			<dd>
-				{{ common.switch('imcger_collapsequote_overwrite_userset', S_IMCGER_OVERWRITE_USERSET, switch_type) }}
+				{{ common.switch('imcger_collapsequote_overwrite_userset', S_COLLAPSEQUOTE_OVERWRITE_USERSET, switch_type) }}
 				{{ common.confirmbox('imcger_collapsequote_overwrite_userset', lang('COLLAPSEQUOTE_USER_SET_CONFIRM')) }}
 			</dd>
 		</dl>
@@ -56,26 +39,26 @@
 		<dl>
 			<dt><label for="imcger_collapsequote_button_fg">{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR') ~ lang('COLON') }}</label><br ><span>{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR_DESC') }}</span></dt>
 			<dd>
-				{{ common.colourpick('imcger_collapsequote_button_fg', IMCGER_COLLAPSEQUOTE_BUTTON_FG) }}
+				{{ common.colourpick('imcger_collapsequote_button_fg', COLLAPSEQUOTE_BUTTON_FG) }}
 			</dd>
 		</dl>
 		<dl>
 			<dt><label for="imcger_collapsequote_button_bg">{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR') ~ lang('COLON') }}</label><br ><span>{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR_DESC') }}</span></dt>
 			<dd>
-				{{ common.colourpick('imcger_collapsequote_button_bg', IMCGER_COLLAPSEQUOTE_BUTTON_BG) }}
+				{{ common.colourpick('imcger_collapsequote_button_bg', COLLAPSEQUOTE_BUTTON_BG) }}
 			</dd>
 		</dl>
 		<hr>
 		<dl>
 			<dt><label for="imcger_collapsequote_button_fg_hover">{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER') ~ lang('COLON') }}</label><br ><span>{{ lang('COLLAPSEQUOTE_BUTTON_FG_COLOR_HOVER_DESC') }}</span></dt>
 			<dd>
-				{{ common.colourpick('imcger_collapsequote_button_fg_hover', IMCGER_COLLAPSEQUOTE_BUTTON_FG_HOVER) }}
+				{{ common.colourpick('imcger_collapsequote_button_fg_hover', COLLAPSEQUOTE_BUTTON_FG_HOVER) }}
 			</dd>
 		</dl>
 		<dl>
 			<dt><label for="imcger_collapsequote_button_bg_hover">{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER') ~ lang('COLON') }}</label><br ><span>{{ lang('COLLAPSEQUOTE_BUTTON_BG_COLOR_HOVER_DESC') }}</span></dt>
 			<dd>
-				{{ common.colourpick('imcger_collapsequote_button_bg_hover', IMCGER_COLLAPSEQUOTE_BUTTON_BG_HOVER) }}
+				{{ common.colourpick('imcger_collapsequote_button_bg_hover', COLLAPSEQUOTE_BUTTON_BG_HOVER) }}
 			</dd>
 		</dl>
 	</fieldset>
@@ -92,8 +75,8 @@
 </form>
 
 <p class="imcger-copyright">
-	{{ IMCGER_COLLAPSEQUOTE_TITLE }} v{{ IMCGER_COLLAPSEQUOTE_EXT_VER }} &copy; IMC-Ger<br>
-	{{ lang('ACP_IMCGER_LANG_DESC') }} v{{ lang('ACP_IMCGER_LANG_EXT_VER') }} &bull; {{ lang('ACP_IMCGER_LANG_AUTHOR') }}
+	{{ COLLAPSEQUOTE_TITLE }} v{{ COLLAPSEQUOTE_EXT_VER }} &copy; IMC-Ger<br>
+	{{ lang('COLLAPSEQUOTE_LANG_DESC') }} v{{ lang('COLLAPSEQUOTE_LANG_EXT_VER') }} &bull; {{ lang('COLLAPSEQUOTE_LANG_AUTHOR') }}
 </p>
 
 {% include 'overall_footer.html' %}
