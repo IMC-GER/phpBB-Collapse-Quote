@@ -39,13 +39,14 @@ If quotes are very long, the box is displayed in a smaller size. A mouse click d
 
 ## Changelog
 
-### v1.4.0 (17-11-2024) 
+### v1.4.0 (19-11-2024) 
 - Fixed Don't set default data for guest when board email ist deactive
 - Changed Used only one template for user settings in UCP, ACP and user administrations panele
 - Changed Minimum number of visible lines
 - Changed Language vars renamed
 - Changed Template vars renamed
 - Changed The texts of the language files have been adapted
+- Changed text alignment setting in drop-down list
 - Changed Requirements phpBB min. 3.3.0 and php max. 8.3
 - Removed Redundant columen with user data in db config table
 - Removed Language file common.php

@@ -116,10 +116,14 @@ class ucp_listener implements EventSubscriberInterface
 		if (!$event['submit'])
 		{
 			$this->template->assign_vars([
-				'TOGGLECTRL_CQ'				 => 'radio',
-				'UCP_COLLAPSEQUOTE_AKTIVE'	 => $event['data']['user_collapsequote_aktive'],
-				'UCP_COLLAPSEQUOTE_TEXT_TOP' => $event['data']['user_collapsequote_text_top'],
-				'UCP_COLLAPSEQUOTE_LINES'	 => $event['data']['user_collapsequote_lines'],
+				'TOGGLECTRL_CQ'						=> 'radio',
+				'UCP_COLLAPSEQUOTE_AKTIVE'			=> $event['data']['user_collapsequote_aktive'],
+				'UCP_COLLAPSEQUOTE_LINES'			=> $event['data']['user_collapsequote_lines'],
+				'UCP_COLLAPSEQUOTE_TEXT_TOP'		=> $event['data']['user_collapsequote_text_top'],
+				'UCP_COLLAPSEQUOTE_TEXT_TOP_OPTION' => [
+					'COLLAPSEQUOTE_TOP'		=> 1,
+					'COLLAPSEQUOTE_BOTTOM'	=> 0,
+				],
 			]);
 		}
 	}

@@ -109,10 +109,14 @@ class acp_listener implements EventSubscriberInterface
 	public function acp_users_prefs_modify_template_data($event)
 	{
 		$event['user_prefs_data'] = array_merge($event['user_prefs_data'], [
-			'TOGGLECTRL_CQ'					=> 'radio',
-			'UCP_COLLAPSEQUOTE_AKTIVE'		=> $event['user_row']['user_collapsequote_aktive'],
-			'UCP_COLLAPSEQUOTE_TEXT_TOP'	=> $event['user_row']['user_collapsequote_text_top'],
-			'UCP_COLLAPSEQUOTE_LINES'		=> $event['user_row']['user_collapsequote_lines'],
+			'TOGGLECTRL_CQ'						=> 'radio',
+			'UCP_COLLAPSEQUOTE_AKTIVE'			=> $event['user_row']['user_collapsequote_aktive'],
+			'UCP_COLLAPSEQUOTE_LINES'	 		=> $event['user_row']['user_collapsequote_lines'],
+			'UCP_COLLAPSEQUOTE_TEXT_TOP' 		=> $event['user_row']['user_collapsequote_text_top'],
+			'UCP_COLLAPSEQUOTE_TEXT_TOP_OPTION' => [
+				'COLLAPSEQUOTE_TOP'		=> 1,
+				'COLLAPSEQUOTE_BOTTOM'	=> 0,
+			],
 		]);
 	}
 }

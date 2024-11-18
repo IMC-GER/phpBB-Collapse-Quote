@@ -70,7 +70,9 @@ $lang = array_merge($lang, [
 	'COLLAPSEQUOTE_VISIBLE_LINES_DESC'		=> 'Number of visible lines of the quote box in minimized state.',
 
 	'COLLAPSEQUOTE_TEXT_TOP'				=> 'Text alignment',
-	'COLLAPSEQUOTE_TEXT_TOP_DESC'			=> 'When activated, the first lines are displayed in the minimized state. When deactivated, the last lines.',
+	'COLLAPSEQUOTE_TEXT_TOP_DESC'			=> 'Select which lines of the quote will be displayed in the minimised state.',
+	'COLLAPSEQUOTE_TOP'						=> 'Show first lines',
+	'COLLAPSEQUOTE_BOTTOM'					=> 'Show last lines',
 
 	'COLLAPSEQUOTE_OVERWRITE_USERSET'		=> 'Overwrite user settings',
 	'COLLAPSEQUOTE_OVERWRITE_USERSET_DEC'	=> 'With this selection, the settings of all users are overwritten. Without this selection, only default values for guests and new users will be set.',

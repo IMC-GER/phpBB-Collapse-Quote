@@ -70,7 +70,9 @@ $lang = array_merge($lang, [
 	'COLLAPSEQUOTE_VISIBLE_LINES_DESC'		=> 'Anzahl der sichtbaren Textzeilen der Zitate im minimierten Zustand.',
 
 	'COLLAPSEQUOTE_TEXT_TOP'				=> 'Textausrichtung',
-	'COLLAPSEQUOTE_TEXT_TOP_DESC'			=> 'Bei Aktivierung werden im minimierten Zustand die ersten Zeilen angezeigt. Bei Deaktivierung die letzten Zeilen.',
+	'COLLAPSEQUOTE_TEXT_TOP_DESC'			=> 'Wählen Sie aus, welche Zeilen des Zitats im minimierten Zustand angezeigt werden sollen.',
+	'COLLAPSEQUOTE_TOP'						=> 'Zeige erste Zeilen',
+	'COLLAPSEQUOTE_BOTTOM'					=> 'Zeige letzte Zeilen',
 
 	'COLLAPSEQUOTE_OVERWRITE_USERSET'		=> 'Benutzereinstellungen überschreiben',
 	'COLLAPSEQUOTE_OVERWRITE_USERSET_DEC'	=> 'Bei dieser Auswahl werden die Einstellungen aller Benutzer überschrieben. Ohne diese Auswahl werden nur die Standartwerte für neue Benutzer und Gäste gesetzt.',
