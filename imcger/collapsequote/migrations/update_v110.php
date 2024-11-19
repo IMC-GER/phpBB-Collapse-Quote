@@ -25,7 +25,7 @@ class update_v110 extends \phpbb\db\migration\migration
 	public function update_data()
 	{
 		return [
-			['config.add', ['imcger_collapsequote_button_fg_hover', '']],
+			['config.add', ['imcger_collapsequote_button_fg_hover', 'd31141']],
 			['config.add', ['imcger_collapsequote_button_bg_hover', '']],
 		];
 	}

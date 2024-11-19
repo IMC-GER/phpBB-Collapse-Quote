@@ -27,7 +27,7 @@ class install_acp_module extends \phpbb\db\migration\migration
 		return [
 			['config.add', ['imcger_collapsequote_visible_lines', 4]],
 			['config.add', ['imcger_collapsequote_button_fg', '']],
-			['config.add', ['imcger_collapsequote_button_bg', '']],
+			['config.add', ['imcger_collapsequote_button_bg', 'e3e1c3']],
 
 			['module.add', [
 				'acp',

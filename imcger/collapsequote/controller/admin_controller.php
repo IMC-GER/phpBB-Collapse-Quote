@@ -126,8 +126,8 @@ class admin_controller
 			'UCP_COLLAPSEQUOTE_LINES'			=> $user_data['user_collapsequote_lines'],
 			'UCP_COLLAPSEQUOTE_TEXT_TOP'		=> $user_data['user_collapsequote_text_top'],
 			'UCP_COLLAPSEQUOTE_TEXT_TOP_OPTION' => [
-				'COLLAPSEQUOTE_TOP'		=> '1',
-				'COLLAPSEQUOTE_BOTTOM'	=> '0',
+				'COLLAPSEQUOTE_TOP'		=> 1,
+				'COLLAPSEQUOTE_BOTTOM'	=> 0,
 			],
 			'S_COLLAPSEQUOTE_OVERWRITE_USERSET'	=> false,
 
@@ -136,7 +136,6 @@ class admin_controller
 			'COLLAPSEQUOTE_BUTTON_BG_HOVER'		=> $this->config['imcger_collapsequote_button_bg_hover'],
 			'COLLAPSEQUOTE_BUTTON_FG_HOVER'		=> $this->config['imcger_collapsequote_button_fg_hover'],
 		]);
-
 	}
 
 	/**

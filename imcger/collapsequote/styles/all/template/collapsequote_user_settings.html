@@ -7,10 +7,9 @@
  *
  #}
 
-{% import '@imcger_collapsequote/twig_macros.html' as common %}
+{%- import '@imcger_collapsequote/twig_macros.html' as common %}
 {%- set switch_type = TOGGLECTRL_TYPE ?? 'toggle' %}
 {%- set switch_type = TOGGLECTRL_CQ ? TOGGLECTRL_CQ : switch_type %}
-
 		<dl>
 			<dt><label for="user_collapsequote_aktive">{{ lang('COLLAPSEQUOTE_ACTIVE') ~ lang('COLON') }}</label></dt>
 			<dd>
