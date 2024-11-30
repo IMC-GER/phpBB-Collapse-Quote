@@ -58,7 +58,7 @@ $lang = array_merge($lang, [
 
 	// Extension description
 	'COLLAPSEQUOTE_TITLE'					=> 'Collapse Quote',
-	'COLLAPSEQUOTE_TITLE_EXPLAIN'			=> 'Here you can set the size of the quote box and the colours of the button used to resize the quote box.',
+	'COLLAPSEQUOTE_TITLE_EXPLAIN'			=> 'For very long quotes, the quote box is reduced in size. To view the entire quote, click on a button below the quote box.<br>Here you can set the size of the quote box and the colours of the button used to resize the quote box.',
 
 	// User settings
 	'COLLAPSEQUOTE_SETTINGS_USER'			=> 'Settings for guests and new users',

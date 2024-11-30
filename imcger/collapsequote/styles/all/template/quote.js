@@ -159,7 +159,8 @@ class imcgerQuoteBox {
 
 		window.addEventListener('resize', function (e) {
 			// List of <blockquote> elements that are expanded
-			let quoteShadow = quoteElement.getElementsByClassName('imcger-quote-shadow')[0];
+			let quoteShadows = quoteElement.getElementsByClassName('imcger-quote-shadow'),
+				quoteShadow	 = quoteShadows[quoteShadows.length - 1];
 
 			if (quoteShadow.style.display == 'none') {
 				// Read offset height of the quote and adjust the display range

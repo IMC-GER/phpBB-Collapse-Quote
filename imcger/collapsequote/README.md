@@ -1,7 +1,7 @@
 # phpBB-Collapse-Quote
 
 ## Description
-If quotes are very long, the box is displayed in a smaller size. A mouse click displays the entire quote.
+For very long quotes, the quote box is reduced in size. To view the entire quote, click on a button below the quote box.
 
 #### Settings in User Control Panel > Board preferences > Edit display options
 - Collapse Quote enable/disable.
@@ -39,8 +39,9 @@ If quotes are very long, the box is displayed in a smaller size. A mouse click d
 
 ## Changelog
 
-### v1.4.0 (19-11-2024) 
+### v1.4.0 (30-11-2024) 
 - Fixed Don't set default data for guest when board email ist deactive
+- Fixed When resizing the document, the quotation boxes don't adjust there height when a boxes is nested.
 - Changed Used only one template for user settings in UCP, ACP and user administrations panele
 - Changed Minimum number of visible lines
 - Changed Language vars renamed

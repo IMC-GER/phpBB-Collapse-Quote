@@ -58,7 +58,7 @@ $lang = array_merge($lang, [
 
 	// Extension description
 	'COLLAPSEQUOTE_TITLE'					=> 'Collapse Quote',
-	'COLLAPSEQUOTE_TITLE_EXPLAIN'			=> 'Hier können die Größe des Zitatfeldes und die Farben des Buttons, der zur Größenänderung der Zitate dient, eingestellt werden.',
+	'COLLAPSEQUOTE_TITLE_EXPLAIN'			=> 'Bei sehr langen Zitaten wird die Zitatbox verkleinert. Das gesamte Zitat wird mit einem Mausklick auf eine Schaltfläche unterhalb der Zitatbox angezeigt.<br>Hier können die Größe des Zitatfeldes und die Farben des Buttons, der zur Größenänderung der Zitate dient, eingestellt werden.',
 
 	// User settings
 	'COLLAPSEQUOTE_SETTINGS_USER'			=> 'Einstellungen für Gäste und neue Benutzer',
