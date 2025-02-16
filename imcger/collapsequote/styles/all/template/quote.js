@@ -33,6 +33,7 @@ class imcgerQuoteBox {
 		let para			= document.querySelector('blockquote'),
 			compStyles		= window.getComputedStyle(para),
 			lineHeight		= Math.ceil(parseFloat(compStyles.getPropertyValue('line-height'))),
+			marginTop		= parseInt(compStyles.getPropertyValue('margin-top')),
 			paddingTop		= parseInt(compStyles.getPropertyValue('padding-top')),
 			paddingBottom	= parseInt(compStyles.getPropertyValue('padding-bottom')),
 			bgColor	   		= compStyles.getPropertyValue('background-color'),
@@ -41,7 +42,7 @@ class imcgerQuoteBox {
 			shadowHeigth	= shadowLines * lineHeight,
 			shadowHeigthTop	= (shadowLines + 1) * lineHeight;
 
-		return {'bgColor': bgColor, 'lineHeight': lineHeight, 'shadowHeigthTop': shadowHeigthTop, 'shadowHeigth': shadowHeigth, 'maxQuoteHeigth': maxQuoteHeigth, 'paddingBottom': paddingBottom, 'paddingTop': paddingTop};
+		return {'bgColor': bgColor, 'lineHeight': lineHeight, 'shadowHeigthTop': shadowHeigthTop, 'shadowHeigth': shadowHeigth, 'maxQuoteHeigth': maxQuoteHeigth, 'paddingBottom': paddingBottom, 'marginTop': marginTop, 'paddingTop': paddingTop};
 	}
 
 	static ColorToRGBA(color, opacity) {
@@ -174,6 +175,7 @@ class imcgerQuoteBox {
 			quoteButton.addEventListener('click', function (e) {
 				let quoteButton	 = e.target,
 					quoteBox	 = quoteButton.previousSibling,
+					nestedBox	 = Number(quoteBox.querySelector('blockquote') !== null),
 					quoteBoxRect = quoteBox.getBoundingClientRect(),
 					quoteTextBox = quoteBox.firstChild,
 					quoteShadow	 = quoteBox.lastChild;
@@ -187,7 +189,7 @@ class imcgerQuoteBox {
 					// If the upper part of the quote box is outside the viewport scroll it to position 0
 					if (quoteBoxRect.top < 0) {
 						document.getElementsByTagName('html')[0].style.scrollBehavior = 'smooth';
-						window.scrollBy(0, quoteBoxRect.top - (imcgerQuoteBox.styleData.lineHeight + (2 * imcgerQuoteBox.styleData.paddingTop)));
+						window.scrollBy(0, quoteBoxRect.top - (imcgerQuoteBox.styleData.lineHeight + (2 * imcgerQuoteBox.styleData.paddingTop) + (nestedBox * imcgerQuoteBox.styleData.marginTop)));
 					}
 				}
 				// Expand the quotebox
