@@ -39,16 +39,18 @@ For very long quotes, the quote box is reduced in size. To view the entire quote
 
 ## Changelog
 
-### v1.4.0 (30-11-2024) 
+### v1.4.0 (17-02-2025) 
 - Fixed Don't set default data for guest when board email ist deactive
 - Fixed When resizing the document, the quotation boxes don't adjust there height when a boxes is nested.
+- Fixed Nested quotes do not scroll to the desired position when minimized
 - Changed Used only one template for user settings in UCP, ACP and user administrations panele
 - Changed Minimum number of visible lines
 - Changed Language vars renamed
 - Changed Template vars renamed
 - Changed The texts of the language files have been adapted
 - Changed text alignment setting in drop-down list
-- Changed Requirements phpBB min. 3.3.0 and php max. 8.3
+- Changed Requirements phpBB min. 3.3.0 and php max. 8.4
+- Changed Set core event text_formatter_s9e_configure_after to priority one
 - Removed Redundant columen with user data in db config table
 - Removed Language file common.php
 - Added LukeWCSphpBBConfirmBox v1.4.3

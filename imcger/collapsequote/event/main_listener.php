@@ -69,7 +69,7 @@ class main_listener implements EventSubscriberInterface
 			'core.viewtopic_assign_template_vars_before' => 'viewtopic_assign_template_vars', // topics
 			'core.ucp_pm_view_message'					 => 'viewtopic_assign_template_vars', // private message
 			'core.modify_format_display_text_before'	 => 'viewtopic_assign_template_vars', // post and pm preview
-			'core.text_formatter_s9e_configure_after' 	 => 'configure_textformatter',
+			'core.text_formatter_s9e_configure_after' 	 => ['configure_textformatter', 1],
 		];
 	}
 
