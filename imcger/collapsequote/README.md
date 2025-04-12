@@ -39,7 +39,7 @@ For very long quotes, the quote box is reduced in size. To view the entire quote
 
 ## Changelog
 
-### v1.4.0 (17-02-2025) 
+### v1.4.0 (12-04-2025) 
 - Fixed Don't set default data for guest when board email ist deactive
 - Fixed When resizing the document, the quotation boxes don't adjust there height when a boxes is nested.
 - Fixed Nested quotes do not scroll to the desired position when minimized
