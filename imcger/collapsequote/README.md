@@ -1,7 +1,7 @@
 # phpBB-Collapse-Quote
 
 ## Description
-For very long quotes, the quote box is reduced in size. To view the entire quote, click on a button below the quote box.
+The quoted text field is reduced in size for very long quots. To display the entire quote, click on the button below the quote field.
 
 #### Settings in User Control Panel > Board preferences > Edit display options
 - Collapse Quote enable/disable.
@@ -23,8 +23,8 @@ For very long quotes, the quote box is reduced in size. To view the entire quote
 - [Post Quote is expand](https://raw.githubusercontent.com/IMC-GER/images/main/screenshots/collapsequote/en/screenshot_collapse_quote_expand.png)
 
 ## Requirements
-- php 7.0 or higher
-- phpBB 3.2.0 or higher
+- php 7.1.3 or higher
+- phpBB 3.3.0 or higher
 
 ## Installation
 - Copy the extension to `phpBB3/ext/imcger/collapsequote`.
