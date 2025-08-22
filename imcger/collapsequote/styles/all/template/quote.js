@@ -207,9 +207,10 @@ class imcgerQuoteBox {
    Here by the nested blockquote elements are not listed. */
 imcger.collapseQuote.bqElements = document.querySelectorAll('div.content > blockquote');
 imcger.collapseQuote.box = [];
+imcger.collapseQuote.i = 0;
 
-let i = 0;
+
 for (let bqElement of imcger.collapseQuote.bqElements) {
-	imcger.collapseQuote.box[i] = new imcgerQuoteBox(bqElement);
-	i++;
+	imcger.collapseQuote.box[imcger.collapseQuote.i] = new imcgerQuoteBox(bqElement);
+	imcger.collapseQuote.i++;
 }

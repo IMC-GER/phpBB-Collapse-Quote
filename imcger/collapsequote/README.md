@@ -39,6 +39,11 @@ The quoted text field is reduced in size for very long quots. To display the ent
 
 ## Changelog
 
+### v1.4.1 (21-08-2025) 
+- Fixed Identifier 'i' has already been declared in quot
+- Changed template var U_ACTION to Twig
+- Changed load ACP JavaScript only on Collapse Quote setting page
+
 ### v1.4.0 (12-04-2025) 
 - Fixed Don't set default data for guest when board email ist deactive
 - Fixed When resizing the document, the quotation boxes don't adjust there height when a boxes is nested.
