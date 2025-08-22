@@ -7,11 +7,12 @@
  *
  #}
 
-{% if not definition.INCLUDED_COLPICKJS %}
-	{% INCLUDEJS '@imcger_collapsequote/colpick/colpick.js' %}
-	{% INCLUDECSS '@imcger_collapsequote/colpick/colpick.css' %}
-	{% DEFINE INCLUDED_COLPICKJS = true %}
-{% endif %}
+{% if COLLAPSEQUOTE_TITLE is defined %}
+	{% if not definition.INCLUDED_COLPICKJS %}
+		{% INCLUDEJS '@imcger_collapsequote/colpick/colpick.js' %}
+		{% INCLUDECSS '@imcger_collapsequote/colpick/colpick.css' %}
+		{% DEFINE INCLUDED_COLPICKJS = true %}
+	{% endif %}
 
 <script>
 	/**
@@ -119,3 +120,4 @@
 		});
 	});
 </script>
+{% endif %}
