@@ -30,7 +30,8 @@
 	z-index: 1;
 }
 
-blockquote cite, .uncited::before {
+.content > blockquote > div > cite,
+.content > blockquote.uncited::before {
   position: relative;
   z-index: 1;
 }
