@@ -39,6 +39,13 @@ The quoted text field is reduced in size for very long quots. To display the ent
 
 ## Changelog
 
+### v1.4.2 (09-01-2026) 
+- Fixed Nested quotes when using Text alignment as 'Show last lines' sometimes show the usernames overlapping
+- Changed Set Button font weigth in css to bold
+- Changed Rename listener
+- Changed Rename controller
+- Changed php max. v8.5.x
+
 ### v1.4.1 (21-08-2025) 
 - Fixed Identifier 'i' has already been declared in quot
 - Changed template var U_ACTION to Twig

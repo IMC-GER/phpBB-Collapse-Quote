@@ -1,6 +1,6 @@
 services:
     imcger.collapsequote.admin.controller:
-        class: 'imcger\collapsequote\controller\admin_controller'
+        class: 'imcger\collapsequote\controller\cquote_admin_controller'
         arguments:
             - '@config'
             - '@template'
@@ -10,8 +10,8 @@ services:
             - '@dbal.conn'
             - '@ext.manager'
 
-    imcger.collapsequote.listener:
-        class: imcger\collapsequote\event\main_listener
+    imcger.collapsequote.main.listener:
+        class: imcger\collapsequote\event\cquote_main_listener
         arguments:
             - '@config'
             - '@template'
@@ -20,8 +20,8 @@ services:
         tags:
             - { name: event.listener }
 
-    imcger.collapsequote.acp:
-        class: 'imcger\collapsequote\event\acp_listener'
+    imcger.collapsequote.acp.listener:
+        class: 'imcger\collapsequote\event\cquote_acp_listener'
         arguments:
             - '@template'
             - '@language'
@@ -29,8 +29,8 @@ services:
         tags:
             - { name: event.listener }
 
-    imcger.collapsequote.ucp:
-        class: 'imcger\collapsequote\event\ucp_listener'
+    imcger.collapsequote.ucp.listener:
+        class: 'imcger\collapsequote\event\cquote_ucp_listener'
         arguments:
             - '@config'
             - '@template'

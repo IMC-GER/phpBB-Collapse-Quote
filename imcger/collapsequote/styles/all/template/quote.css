@@ -23,6 +23,7 @@
 }
 
 .imcger-quote-togglebutton {
+	font-weight: bold;
 	cursor: pointer;
 	display: none;
 	position: relative;

@@ -18,7 +18,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * Collapse Quote listener
  */
-class acp_listener implements EventSubscriberInterface
+class cquote_acp_listener implements EventSubscriberInterface
 {
 	/** @var \phpbb\template\template */
 	protected $template;

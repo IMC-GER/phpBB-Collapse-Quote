@@ -10,7 +10,7 @@
 
 namespace imcger\collapsequote\controller;
 
-class admin_controller
+class cquote_admin_controller
 {
 	/** @var config */
 	protected $config;

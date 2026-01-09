@@ -18,7 +18,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * Collapse Quote listener
  */
-class ucp_listener implements EventSubscriberInterface
+class cquote_ucp_listener implements EventSubscriberInterface
 {
 	/** @var config */
 	protected $config;
